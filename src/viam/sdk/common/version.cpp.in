@@ -1,0 +1,9 @@
+#include <viam/sdk/common/version.hpp>
+
+namespace viam {
+namespace sdk {
+
+const char* const kVersion = "@VIAMCPPSDK_SDK_VERSION@";
+
+}  // namespace sdk
+}  // namespace viam
