@@ -9,6 +9,20 @@ namespace viam {
 namespace sdk {
 namespace impl {
 
+Arm::KinematicsData ArmClient::from_proto(const viam::common::v1::GetKinematicsResponse& proto) {
+    std::vector<unsigned char> bytes(proto.kinematics_data().begin(),
+                                     proto.kinematics_data().end());
+    switch (proto.format()) {
+        case common::v1::KinematicsFileFormat::KINEMATICS_FILE_FORMAT_SVA:
+            return Arm::KinematicsDataSVA(std::move(bytes));
+        case common::v1::KinematicsFileFormat::KINEMATICS_FILE_FORMAT_URDF:
+            return Arm::KinematicsDataURDF(std::move(bytes));
+        case common::v1::KinematicsFileFormat::KINEMATICS_FILE_FORMAT_UNSPECIFIED:  // fallthrough
+        default:
+            return Arm::KinematicsDataUnspecified{};
+    }
+}
+
 ArmClient::ArmClient(std::string name, std::shared_ptr<grpc::Channel> channel)
     : Arm(std::move(name)),
       stub_(viam::component::arm::v1::ArmService::NewStub(channel)),
@@ -65,7 +79,7 @@ ProtoStruct ArmClient::do_command(const ProtoStruct& command) {
 Arm::KinematicsData ArmClient::get_kinematics(const ProtoStruct& extra) {
     return make_client_helper(this, *stub_, &StubType::GetKinematics)
         .with(extra)
-        .invoke([](auto& response) { return Arm::from_proto(response); });
+        .invoke([](auto& response) { return from_proto(response); });
 }
 
 std::vector<GeometryConfig> ArmClient::get_geometries(const ProtoStruct& extra) {

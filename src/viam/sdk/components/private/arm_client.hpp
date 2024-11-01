@@ -5,6 +5,7 @@
 
 #include <grpcpp/channel.h>
 
+#include <viam/api/common/v1/common.pb.h>
 #include <viam/api/component/arm/v1/arm.grpc.pb.h>
 
 #include <viam/sdk/components/arm.hpp>
@@ -19,6 +20,9 @@ namespace impl {
 class ArmClient : public Arm {
    public:
     using interface_type = Arm;
+
+    static Arm::KinematicsData from_proto(const viam::common::v1::GetKinematicsResponse& proto);
+
     ArmClient(std::string name, std::shared_ptr<grpc::Channel> channel);
 
     pose get_end_position(const ProtoStruct& extra) override;
