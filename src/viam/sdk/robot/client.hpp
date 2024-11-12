@@ -3,6 +3,7 @@
 /// @brief gRPC client implementation for a `robot`.
 #pragma once
 
+#include <chrono>
 #include <string>
 #include <thread>
 
@@ -100,6 +101,11 @@ class RobotClient {
                                                      const Options& options);
     RobotClient(std::shared_ptr<ViamChannel> channel);
     std::vector<Name> resource_names() const;
+
+    void log(const std::string& name,
+             const std::string& level,
+             const std::string& message,
+             std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds> time);
 
     /// @brief Lookup and return a `shared_ptr` to a resource.
     /// @param name The `Name` of the resource.

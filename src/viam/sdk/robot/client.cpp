@@ -320,6 +320,26 @@ std::vector<Name> RobotClient::resource_names() const {
     return resource_names_;
 }
 
+void RobotClient::log(
+    const std::string& name,
+    const std::string& level,
+    const std::string& message,
+    std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds> time) {
+    robot::v1::LogRequest req;
+    common::v1::LogEntry log;
+
+    *log.mutable_logger_name() = name;
+    log.set_level(level);
+    *log.mutable_message() = message;
+    (void)time;
+    req.mutable_logs()->Add(std::move(log));
+
+    robot::v1::LogResponse resp;
+    ClientContext ctx;
+    const auto response = impl_->stub_->Log(ctx, req, &resp);
+    (void)response;
+}
+
 std::shared_ptr<RobotClient> RobotClient::with_channel(std::shared_ptr<ViamChannel> channel,
                                                        const Options& options) {
     std::shared_ptr<RobotClient> robot = std::make_shared<RobotClient>(std::move(channel));
