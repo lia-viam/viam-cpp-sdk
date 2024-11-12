@@ -99,6 +99,8 @@ target_sources(viamsdk
     components/sensor.cpp
     components/servo.cpp
     config/resource.cpp
+    log/logger.cpp
+    log/private/log_backend.cpp
     module/handler_map.cpp
     module/module.cpp
     module/service.cpp
@@ -239,6 +241,7 @@ target_link_libraries(viamsdk
   PUBLIC ${VIAMCPPSDK_PROTOBUF_LIBRARIES}
   PUBLIC Boost::headers
   PUBLIC Boost::log
+  PUBLIC Boost::log_setup
   PUBLIC xtensor
   PRIVATE ${VIAMCPPSDK_GRPCXX_REFLECTION_LIBRARIES}
   PRIVATE absl::strings
