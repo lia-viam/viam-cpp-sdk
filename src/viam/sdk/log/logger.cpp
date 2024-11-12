@@ -31,8 +31,13 @@ BOOST_LOG_GLOBAL_LOGGER_INIT(sdk_logger, LoggerImpl) {
     boost::log::core::get()->add_global_attribute("TimeStamp",
                                                   boost::log::attributes::local_clock());
 
-    auto sink = boost::log::add_console_log(std::cout);
+    auto sink = ostream_sink();
+
+    sink->locked_backend()->add_stream(boost::shared_ptr<std::ostream>(
+        reinterpret_cast<std::ostream*>(&std::cout), boost::null_deleter()));
     sink->set_formatter(log_formatter());
+
+    boost::log::core::get()->add_sink(sink);
 
     LoggerImpl lg(boost::log::keywords::severity = log_level::info,
                   boost::log::keywords::channel = "C++ SDK");
@@ -63,6 +68,18 @@ std::ostream& operator<<(std::ostream& os, log_level level) {
     }
 
     return os;
+}
+
+void add_ostream_log(std::ostream& os) {
+    ostream_sink()->locked_backend()->add_stream(
+        boost::shared_ptr<std::ostream>(&os, boost::null_deleter()));
+}
+
+void remove_ostream_log(std::ostream& os) {
+    // This may be a little inefficient but I consider it preferrable to making the user care about
+    // boost::shared_ptr<std::ostream>.
+    ostream_sink()->locked_backend()->remove_stream(
+        boost::shared_ptr<std::ostream>(&os, boost::null_deleter()));
 }
 
 void set_global_log_level(log_level level) {}

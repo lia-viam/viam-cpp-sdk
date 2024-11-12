@@ -5,7 +5,7 @@
 #include <boost/log/sources/severity_channel_logger.hpp>
 #include <boost/log/utility/manipulators/add_value.hpp>
 
-#include <chrono>
+#include <ostream>
 
 #include <cstdint>
 
@@ -32,7 +32,22 @@ BOOST_LOG_ATTRIBUTE_KEYWORD(a_level, "Severity", viam::sdk::log_level);
 BOOST_LOG_ATTRIBUTE_KEYWORD(a_file, "file", const char*);
 BOOST_LOG_ATTRIBUTE_KEYWORD(a_line, "line", unsigned int);
 
-void set_global_log_level(log_level);
+/// @brief Supplement console logging with an additional stream output.
+/// @return A no-op deleter shared_ptr to the stream that was added, which can be later passed to a
+/// call to remove_ostream_log.
+void add_ostream_log(std::ostream&);
+
+/// @brief Removes a log stream which was added by a call to add_ostream_log.
+void remove_ostream_log(std::ostream&);
+
+/// @brief Sets the global log filter to print messages whose severity is >= level.
+void set_global_log_level(log_level level);
+
+/// @brief Sets the per resource log filter of @p resource to be @p level.
+/// @param resource Assumed to name a resource, otherwise this has no effect.
+/// @remark This log level takes priority over the global log level. For example it is
+/// possible to set application-wide logging to only print a higher severity, but have
+/// verbose logging for a resource being debugged.
 void set_resource_log_level(const std::string& resource, log_level level);
 
 }  // namespace sdk
