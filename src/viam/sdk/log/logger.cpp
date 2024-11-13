@@ -79,7 +79,7 @@ BOOST_LOG_GLOBAL_LOGGER_INIT(sdk_logger, LoggerImpl) {
     boost::log::core::get()->add_sink(sink);
 
     LoggerImpl lg(boost::log::keywords::severity = log_level::info,
-                  boost::log::keywords::channel = "C++ SDK");
+                  boost::log::keywords::channel = default_resource_name());
     return lg;
 }
 
@@ -107,6 +107,10 @@ std::ostream& operator<<(std::ostream& os, log_level level) {
     }
 
     return os;
+}
+
+std::string default_resource_name() {
+    return "C++ SDK";
 }
 
 void add_ostream_log(std::ostream& os) {

@@ -23,6 +23,8 @@ enum class log_level : std::int8_t {
 
 std::ostream& operator<<(std::ostream&, log_level);
 
+std::string default_resource_name();
+
 using LoggerImpl = boost::log::sources::severity_channel_logger_mt<log_level>;
 
 BOOST_LOG_GLOBAL_LOGGER(sdk_logger, LoggerImpl);
