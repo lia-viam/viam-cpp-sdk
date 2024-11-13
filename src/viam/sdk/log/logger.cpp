@@ -4,8 +4,41 @@
 #include <boost/log/utility/setup/console.hpp>
 #include <boost/log/utility/setup/formatter_parser.hpp>
 
+#include <map>
+
 namespace viam {
 namespace sdk {
+
+namespace {
+
+// This namespace contains some Meyers' singletons for log data
+
+struct LogFilter {
+    log_level global_severity{log_level::info};
+    std::map<std::string, log_level> resource_severity_map;
+
+    static LogFilter& instance() {
+        static LogFilter result;
+        return result;
+    }
+
+    bool filter(const boost::log::attribute_value_set& attrs) {
+        auto level = attrs[a_level];
+        if (!level) {
+            return false;
+        }
+
+        auto resource = attrs[a_resource_name];
+        if (resource) {
+            auto it = resource_severity_map.find(*resource);
+            if (it != resource_severity_map.end()) {
+                return *level >= it->second;
+            }
+        }
+
+        return *level >= global_severity;
+    }
+};
 
 const boost::log::formatter& log_formatter() {
     // According to the Boost.Log docs, this format string syntax is possibly "less optimal"
@@ -25,6 +58,8 @@ boost::shared_ptr<OstreamSink> ostream_sink() {
     return result;
 }
 
+}  // namespace
+
 BOOST_LOG_GLOBAL_LOGGER_INIT(sdk_logger, LoggerImpl) {
     boost::log::register_simple_formatter_factory<log_level, char>("Severity");
 
@@ -36,6 +71,10 @@ BOOST_LOG_GLOBAL_LOGGER_INIT(sdk_logger, LoggerImpl) {
     sink->locked_backend()->add_stream(boost::shared_ptr<std::ostream>(
         reinterpret_cast<std::ostream*>(&std::cout), boost::null_deleter()));
     sink->set_formatter(log_formatter());
+
+    sink->set_filter([](const boost::log::attribute_value_set& attrs) {
+        return LogFilter::instance().filter(attrs);
+    });
 
     boost::log::core::get()->add_sink(sink);
 
@@ -82,7 +121,13 @@ void remove_ostream_log(std::ostream& os) {
         boost::shared_ptr<std::ostream>(&os, boost::null_deleter()));
 }
 
-void set_global_log_level(log_level level) {}
+void set_global_log_level(log_level level) {
+    LogFilter::instance().global_severity = level;
+}
+
+void set_resource_log_level(const std::string& resource, log_level level) {
+    LogFilter::instance().resource_severity_map[resource] = level;
+}
 
 }  // namespace sdk
 }  // namespace viam
