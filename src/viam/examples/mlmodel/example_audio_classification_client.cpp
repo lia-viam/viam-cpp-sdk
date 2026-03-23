@@ -25,9 +25,8 @@
 #include <boost/accumulators/statistics/stats.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/format.hpp>
+#include <boost/optional.hpp>
 #include <boost/program_options.hpp>
-
-#include <optional>
 
 #include <viam/sdk/common/instance.hpp>
 #include <viam/sdk/robot/client.hpp>
@@ -117,7 +116,7 @@ int main(int argc, char* argv[]) try {
     // the filesystem path to the model file for the
     // yamnet/classification tflite model file from
     // https://tfhub.dev/google/lite-model/yamnet/classification/tflite/1.
-    std::optional<std::string> opt_model_path;
+    boost::optional<std::string> opt_model_path;
     options_desc.add_options()(
         "model-path",
         bpo::value(&opt_model_path),
@@ -129,7 +128,7 @@ int main(int argc, char* argv[]) try {
     // models. Currently, the only supported module is the
     // `mlmodelservice_tflite` modular resource example from the Viam
     // C++ SDK.
-    std::optional<std::string> opt_tflite_module_path;
+    boost::optional<std::string> opt_tflite_module_path;
     options_desc.add_options()("tflite-module-path",
                                bpo::value(&opt_tflite_module_path),
                                "Path to a mlmodelservice modular resource that provides "
@@ -140,7 +139,7 @@ int main(int argc, char* argv[]) try {
     // labels file can be extracted from the yammnet/classification
     // model file with `unzip`. If no labels file is provided, the
     // tool will simply dump the raw scores without labels.
-    std::optional<std::string> opt_model_label_path;
+    boost::optional<std::string> opt_model_label_path;
     options_desc.add_options()(
         "model-label-path",
         bpo::value(&opt_model_label_path),
@@ -148,7 +147,7 @@ int main(int argc, char* argv[]) try {
 
     // In classification mode, this should be the robot URL where the
     // generated configuration is currently running.
-    std::optional<std::string> opt_robot_host;
+    boost::optional<std::string> opt_robot_host;
     options_desc.add_options()(
         "robot-host",
         bpo::value(&opt_robot_host),
@@ -156,14 +155,14 @@ int main(int argc, char* argv[]) try {
 
     // In classification mode, this should be the api key for the robot
     // where the generated configuration is currently running.
-    std::optional<std::string> opt_api_key;
+    boost::optional<std::string> opt_api_key;
     options_desc.add_options()("robot-api-key",
                                bpo::value(&opt_api_key),
                                "API key for accessing the robot running at `--robot-host`\n");
 
     // In classification mode, this should be the api key id for the robot
     // where the generated configuration is currently running.
-    std::optional<std::string> opt_api_key_id;
+    boost::optional<std::string> opt_api_key_id;
     options_desc.add_options()("robot-api-key-id",
                                bpo::value(&opt_api_key_id),
                                "API key id for accessing the robot running at `--robot-host`\n");

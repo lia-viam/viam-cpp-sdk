@@ -15,6 +15,13 @@
 #pragma once
 
 #include <iosfwd>
+
+#include <boost/mp11/algorithm.hpp>
+#include <boost/mp11/list.hpp>
+#include <boost/mpl/joint_view.hpp>
+#include <boost/mpl/list.hpp>
+#include <boost/mpl/transform_view.hpp>
+#include <boost/variant/variant.hpp>
 #include <variant>
 
 #if defined(__has_include) && (__has_include(<xtensor/containers/xadapt.hpp>))
@@ -62,18 +69,29 @@ class MLModelService : public Service {
         return xt::adapt(std::move(data), std::move(size), xt::no_ownership(), std::move(shape));
     }
 
+    // Now that we have a factory for our tensor view types, use mpl
+    // to produce a variant over tensor views over the primitive types
+    // we care about, which are the signed and unsigned fixed width
+    // integral types and the two floating point types.
+    using signed_integral_base_types =
+        boost::mp11::mp_list<std::int8_t, std::int16_t, std::int32_t, std::int64_t>;
+
+    using unsigned_integral_base_types =
+        boost::mp11::mp_transform<std::make_unsigned_t, signed_integral_base_types>;
+
+    using integral_base_types =
+        boost::mp11::mp_append<signed_integral_base_types, unsigned_integral_base_types>;
+
+    using fp_base_types = boost::mp11::mp_list<float, double>;
+
+    using base_types = boost::mp11::mp_append<integral_base_types, fp_base_types>;
+
+    using tensor_view_types =
+        boost::mp11::mp_transform_q<boost::mp11::mp_quote_trait<make_tensor_view_>, base_types>;
+
     // A variant over tensor views for each of the supported primitive types:
     // signed/unsigned fixed-width integers and the two floating-point types.
-    using tensor_views = std::variant<tensor_view<std::int8_t>,
-                                      tensor_view<std::uint8_t>,
-                                      tensor_view<std::int16_t>,
-                                      tensor_view<std::uint16_t>,
-                                      tensor_view<std::int32_t>,
-                                      tensor_view<std::uint32_t>,
-                                      tensor_view<std::int64_t>,
-                                      tensor_view<std::uint64_t>,
-                                      tensor_view<float>,
-                                      tensor_view<double>>;
+    using tensor_views = boost::mp11::mp_rename<tensor_view_types, std::variant>;
 
     // Our parameters to and from the model come as named tensor_views.
     using named_tensor_views = std::unordered_map<std::string, tensor_views>;
