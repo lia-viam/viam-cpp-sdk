@@ -29,7 +29,7 @@ AudioOutClient::AudioOutClient(std::string name, const ViamChannel& channel)
       channel_(&channel) {}
 
 void AudioOutClient::play(std::vector<uint8_t> const& audio_data,
-                          boost::optional<audio_info> info,
+                          std::optional<audio_info> info,
                           const ProtoStruct& extra) {
     return make_client_helper(this, *stub_, &StubType::Play)
         .with(extra,

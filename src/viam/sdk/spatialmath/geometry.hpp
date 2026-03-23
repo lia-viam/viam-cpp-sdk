@@ -3,6 +3,7 @@
 #include <array>
 #include <string>
 #include <tuple>
+#include <variant>
 
 #include <viam/sdk/common/pose.hpp>
 #include <viam/sdk/common/proto_convert.hpp>
@@ -47,7 +48,7 @@ struct capsule {
     friend bool operator==(const capsule& lhs, const capsule& rhs);
 };
 
-typedef boost::variant<struct box, struct sphere, struct capsule> geometry_specifics;
+using geometry_specifics = std::variant<struct box, struct sphere, struct capsule>;
 
 /// @brief The dimensions of a given geometry and the pose of its center.
 class GeometryConfig {

@@ -26,7 +26,7 @@ class AudioOutClient : public AudioOut {
     }
 
     void play(std::vector<uint8_t> const& audio_data,
-              boost::optional<audio_info> info,
+              std::optional<audio_info> info,
               const ProtoStruct& extra) override;
 
     audio_properties get_properties(const ProtoStruct& extra) override;

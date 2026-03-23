@@ -65,9 +65,9 @@ class RobotClient {
     struct operation {
         std::string id;
         std::string method;
-        boost::optional<std::string> session_id;
+        std::optional<std::string> session_id;
         ProtoStruct arguments;
-        boost::optional<time_pt> started;
+        std::optional<time_pt> started;
         friend bool operator==(const operation& lhs, const operation& rhs);
     };
 

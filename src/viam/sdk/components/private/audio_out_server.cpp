@@ -22,7 +22,7 @@ AudioOutServer::AudioOutServer(std::shared_ptr<ResourceManager> manager)
         const std::string& audio_data_str = request->audio_data();
         audio_data.assign(audio_data_str.c_str(), audio_data_str.c_str() + audio_data_str.size());
 
-        boost::optional<audio_info> info;
+        std::optional<audio_info> info;
         if (request->has_audio_info()) {
             info.emplace(audio_info{request->audio_info().codec(),
                                     request->audio_info().sample_rate_hz(),

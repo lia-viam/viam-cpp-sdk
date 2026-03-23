@@ -3,10 +3,10 @@
 #include <iostream>
 #include <memory>
 #include <ostream>
+#include <optional>
 #include <string>
 #include <vector>
 
-#include <boost/optional.hpp>
 #include <boost/program_options.hpp>
 
 #include <viam/sdk/common/instance.hpp>
@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
         std::cout << desc << std::endl;
         return 0;
     }
-    boost::optional<ViamChannel::Options> opts;
+    std::optional<ViamChannel::Options> opts;
     if (vm.count("entity") && vm.count("api-key")) {
         ViamChannel::Options channel_options;
         channel_options.set_entity(vm["entity"].as<std::string>());

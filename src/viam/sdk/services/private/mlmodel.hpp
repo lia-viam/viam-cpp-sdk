@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <cstdint>
+#include <variant>
 #include <vector>
 
 #include <viam/api/service/mlmodel/v1/mlmodel.grpc.pb.h>
@@ -25,10 +27,16 @@ namespace sdk {
 namespace impl {
 namespace mlmodel {
 
-using tensor_storage_types = boost::mpl::transform_view<MLModelService::base_types,
-                                                        std::vector<boost::mpl::placeholders::_1>>;
-
-using tensor_storage = std::vector<boost::make_variant_over<tensor_storage_types>::type>;
+using tensor_storage = std::vector<std::variant<std::vector<std::int8_t>,
+                                                std::vector<std::uint8_t>,
+                                                std::vector<std::int16_t>,
+                                                std::vector<std::uint16_t>,
+                                                std::vector<std::int32_t>,
+                                                std::vector<std::uint32_t>,
+                                                std::vector<std::int64_t>,
+                                                std::vector<std::uint64_t>,
+                                                std::vector<float>,
+                                                std::vector<double>>>;
 
 void copy_sdk_tensor_to_api_tensor(const MLModelService::tensor_views& source,
                                    ::viam::service::mlmodel::v1::FlatTensor* target);

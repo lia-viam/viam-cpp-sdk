@@ -1,4 +1,3 @@
-#include <boost/variant/apply_visitor.hpp>
 #include <viam/sdk/components/private/arm_client.hpp>
 
 #include <grpcpp/channel.h>
@@ -71,7 +70,7 @@ void ArmClient::move_through_joint_positions(const std::vector<std::vector<doubl
                               }
                           }
                       };
-                      boost::apply_visitor(Visitor{request.mutable_options()},
+                      std::visit(Visitor{request.mutable_options()},
                                            *options.max_vel_degs_per_sec);
                   }
 
@@ -87,7 +86,7 @@ void ArmClient::move_through_joint_positions(const std::vector<std::vector<doubl
                               }
                           }
                       };
-                      boost::apply_visitor(Visitor{request.mutable_options()},
+                      std::visit(Visitor{request.mutable_options()},
                                            *options.max_acc_degs_per_sec2);
                   }
 

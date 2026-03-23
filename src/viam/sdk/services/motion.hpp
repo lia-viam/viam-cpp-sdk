@@ -39,19 +39,19 @@ struct motion_configuration {
     std::vector<obstacle_detector> obstacle_detectors;
 
     /// @brief If not null, sets the frequency to poll for the position of the robot.
-    boost::optional<double> position_polling_frequency_hz;
+    std::optional<double> position_polling_frequency_hz;
 
     /// @brief If not null, sets the frequency to poll the vision service(s) for new obstacles.
-    boost::optional<double> obstacle_polling_frequency_hz;
+    std::optional<double> obstacle_polling_frequency_hz;
 
     /// @brief Optional distance in meters a robot is allowed to deviate from the motion plan.
-    boost::optional<double> plan_deviation_m;
+    std::optional<double> plan_deviation_m;
 
     /// @brief Optional linear velocity to target when moving
-    boost::optional<double> linear_m_per_sec;
+    std::optional<double> linear_m_per_sec;
 
     /// @brief Optional angular velocity to target when turning
-    boost::optional<double> angular_degs_per_sec;
+    std::optional<double> angular_degs_per_sec;
 
     friend bool operator==(const motion_configuration& lhs, const motion_configuration& rhs);
     friend std::ostream& operator<<(std::ostream& os, const motion_configuration& v);
@@ -90,7 +90,7 @@ class Motion : public Service {
 
         /// @brief The reason for the state change. The error message if the plan failed, or the
         /// re-plan reason if re-planning was necessary.
-        boost::optional<std::string> reason;
+        std::optional<std::string> reason;
 
         friend bool operator==(const plan_status& lhs, const plan_status& rhs);
     };
@@ -262,7 +262,7 @@ class Motion : public Service {
     /// @return The execution ID of the move_on_globe request.
     inline std::string move_on_globe(
         const geo_point& destination,
-        const boost::optional<double>& heading,
+        const std::optional<double>& heading,
         const std::string& component_name,
         const std::string& movement_sensor_name,
         const std::vector<geo_geometry>& obstacles,
@@ -291,7 +291,7 @@ class Motion : public Service {
     /// @return The execution_id of the move_on_globe request.
     virtual std::string move_on_globe(
         const geo_point& destination,
-        const boost::optional<double>& heading,
+        const std::optional<double>& heading,
         const std::string& component_name,
         const std::string& movement_sensor_name,
         const std::vector<geo_geometry>& obstacles,

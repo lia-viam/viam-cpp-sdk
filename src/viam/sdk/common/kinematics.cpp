@@ -2,7 +2,6 @@
 
 #include <tuple>
 
-#include <boost/variant/apply_visitor.hpp>
 #include <viam/api/common/v1/common.pb.h>
 
 namespace viam {
@@ -43,7 +42,7 @@ void to_proto_impl<KinematicsData>::operator()(const KinematicsData& self,
         }
     } visitor{proto};
 
-    boost::apply_visitor(visitor, self);
+    std::visit(visitor, self);
 }
 
 KinematicsData from_proto_impl<common::v1::GetKinematicsResponse>::operator()(

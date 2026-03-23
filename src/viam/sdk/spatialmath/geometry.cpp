@@ -3,8 +3,6 @@
 #include <string>
 #include <tuple>
 
-#include <boost/variant/get.hpp>
-
 #include <viam/api/common/v1/common.pb.h>
 
 #include <viam/sdk/common/exception.hpp>
@@ -41,7 +39,7 @@ GeometryType GeometryConfig::get_geometry_type() const {
         }
     };
 
-    return boost::apply_visitor(Visitor{}, geometry_specifics_);
+    return std::visit(Visitor{}, geometry_specifics_);
 }
 
 const pose& GeometryConfig::get_pose() const {
@@ -157,7 +155,7 @@ void to_proto_impl<GeometryConfig>::operator()(const GeometryConfig& self,
         }
     };
 
-    boost::apply_visitor(Visitor{*proto}, self.get_geometry_specifics());
+    std::visit(Visitor{*proto}, self.get_geometry_specifics());
 
     *(proto->mutable_label()) = self.get_label();
     *(proto->mutable_center()) = to_proto(self.get_pose());

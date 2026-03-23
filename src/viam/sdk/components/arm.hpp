@@ -3,11 +3,10 @@
 /// @brief Defines an `Arm` component
 #pragma once
 
+#include <optional>
 #include <string>
+#include <variant>
 #include <vector>
-
-#include <boost/optional/optional.hpp>
-#include <boost/variant/variant.hpp>
 
 #include <viam/sdk/common/kinematics.hpp>
 #include <viam/sdk/common/mesh.hpp>
@@ -40,12 +39,12 @@ class Arm : public Component, public Stoppable {
         ::viam::sdk::KinematicsData;
 
     /// @brief A movement limit: either a single scalar applied uniformly, or per-joint values.
-    using MoveLimit = boost::variant<double, std::vector<double>>;
+    using MoveLimit = std::variant<double, std::vector<double>>;
 
     /// @brief Movement specifications for move_through_joint_positions.
     struct MoveOptions {
-        boost::optional<MoveLimit> max_vel_degs_per_sec;
-        boost::optional<MoveLimit> max_acc_degs_per_sec2;
+        std::optional<MoveLimit> max_vel_degs_per_sec;
+        std::optional<MoveLimit> max_acc_degs_per_sec2;
     };
 
     /// @brief Get the current position of the end of the arm.

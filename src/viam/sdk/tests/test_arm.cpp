@@ -1,11 +1,8 @@
 #define BOOST_TEST_MODULE test module test_arm
 #include <viam/sdk/components/arm.hpp>
 
-#include <boost/optional/optional_io.hpp>
 #include <boost/qvm/all.hpp>
 #include <boost/test/included/unit_test.hpp>
-#include <boost/variant/apply_visitor.hpp>
-#include <boost/variant/static_visitor.hpp>
 
 #include <viam/sdk/tests/mocks/mock_arm.hpp>
 #include <viam/sdk/tests/test_utils.hpp>
@@ -22,7 +19,7 @@ using namespace arm;
 
 using namespace viam::sdk;
 
-struct CheckScalar : boost::static_visitor<> {
+struct CheckScalar {
     double expected;
     explicit CheckScalar(double e) : expected(e) {}
     void operator()(double d) const {
@@ -33,7 +30,7 @@ struct CheckScalar : boost::static_visitor<> {
     }
 };
 
-struct CheckVector : boost::static_visitor<> {
+struct CheckVector {
     std::vector<double> expected;
     explicit CheckVector(std::vector<double> e) : expected(std::move(e)) {}
     void operator()(double) const {
@@ -85,8 +82,8 @@ BOOST_AUTO_TEST_CASE(thru_joint_positions) {
 
         BOOST_REQUIRE(mock->move_opts.max_vel_degs_per_sec);
         BOOST_REQUIRE(mock->move_opts.max_acc_degs_per_sec2);
-        boost::apply_visitor(CheckScalar(1.0), *mock->move_opts.max_vel_degs_per_sec);
-        boost::apply_visitor(CheckScalar(2.0), *mock->move_opts.max_acc_degs_per_sec2);
+        std::visit(CheckScalar(1.0), *mock->move_opts.max_vel_degs_per_sec);
+        std::visit(CheckScalar(2.0), *mock->move_opts.max_acc_degs_per_sec2);
         BOOST_CHECK_GT(mock->viam_client_metadata.size(), 0);
     });
 }
@@ -103,8 +100,8 @@ BOOST_AUTO_TEST_CASE(thru_joint_positions_both_vector) {
 
         BOOST_REQUIRE(mock->move_opts.max_vel_degs_per_sec);
         BOOST_REQUIRE(mock->move_opts.max_acc_degs_per_sec2);
-        boost::apply_visitor(CheckVector(vel_joints), *mock->move_opts.max_vel_degs_per_sec);
-        boost::apply_visitor(CheckVector(acc_joints), *mock->move_opts.max_acc_degs_per_sec2);
+        std::visit(CheckVector(vel_joints), *mock->move_opts.max_vel_degs_per_sec);
+        std::visit(CheckVector(acc_joints), *mock->move_opts.max_acc_degs_per_sec2);
     });
 }
 
@@ -120,8 +117,8 @@ BOOST_AUTO_TEST_CASE(thru_joint_positions_acc_scalar_vel_vector) {
 
         BOOST_REQUIRE(mock->move_opts.max_vel_degs_per_sec);
         BOOST_REQUIRE(mock->move_opts.max_acc_degs_per_sec2);
-        boost::apply_visitor(CheckVector(vel_joints), *mock->move_opts.max_vel_degs_per_sec);
-        boost::apply_visitor(CheckScalar(acc_scalar), *mock->move_opts.max_acc_degs_per_sec2);
+        std::visit(CheckVector(vel_joints), *mock->move_opts.max_vel_degs_per_sec);
+        std::visit(CheckScalar(acc_scalar), *mock->move_opts.max_acc_degs_per_sec2);
     });
 }
 
@@ -137,8 +134,8 @@ BOOST_AUTO_TEST_CASE(thru_joint_positions_vel_scalar_acc_vector) {
 
         BOOST_REQUIRE(mock->move_opts.max_vel_degs_per_sec);
         BOOST_REQUIRE(mock->move_opts.max_acc_degs_per_sec2);
-        boost::apply_visitor(CheckScalar(vel_scalar), *mock->move_opts.max_vel_degs_per_sec);
-        boost::apply_visitor(CheckVector(acc_joints), *mock->move_opts.max_acc_degs_per_sec2);
+        std::visit(CheckScalar(vel_scalar), *mock->move_opts.max_vel_degs_per_sec);
+        std::visit(CheckVector(acc_joints), *mock->move_opts.max_acc_degs_per_sec2);
     });
 }
 

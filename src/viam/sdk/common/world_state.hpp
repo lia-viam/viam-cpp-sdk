@@ -3,7 +3,7 @@
 /// @brief Defines `WorldState`.
 #pragma once
 
-#include <boost/optional/optional.hpp>
+#include <optional>
 
 #include <viam/sdk/common/pose.hpp>
 #include <viam/sdk/common/proto_convert.hpp>
@@ -50,7 +50,7 @@ class WorldState {
         /// The pose of this frame relative to the observer's frame.
         pose_in_frame pose_in_observer_frame;
         /// An optional geometry representing the physical object at this transform's location.
-        boost::optional<GeometryConfig> physical_object;
+        std::optional<GeometryConfig> physical_object;
     };
 
     WorldState() = default;

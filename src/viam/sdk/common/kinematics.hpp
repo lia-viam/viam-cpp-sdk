@@ -1,8 +1,8 @@
 #pragma once
 
-#include <boost/variant/variant.hpp>
 #include <map>
 #include <string>
+#include <variant>
 #include <vector>
 
 #include <viam/sdk/common/mesh.hpp>
@@ -60,7 +60,7 @@ struct KinematicsDataURDF : raw_bytes<KinematicsDataURDF> {
 /// @brief The kinematics of a component.
 /// @returns The data in Viam's Spatial Vector Algebra (SVA) format, or URDF.
 using KinematicsData =
-    boost::variant<KinematicsDataUnspecified, KinematicsDataSVA, KinematicsDataURDF>;
+    std::variant<KinematicsDataUnspecified, KinematicsDataSVA, KinematicsDataURDF>;
 
 namespace proto_convert_details {
 

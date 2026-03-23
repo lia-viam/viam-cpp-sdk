@@ -15,11 +15,7 @@
 #pragma once
 
 #include <iosfwd>
-
-#include <boost/mpl/joint_view.hpp>
-#include <boost/mpl/list.hpp>
-#include <boost/mpl/transform_view.hpp>
-#include <boost/variant/variant.hpp>
+#include <variant>
 
 #if defined(__has_include) && (__has_include(<xtensor/containers/xadapt.hpp>))
 #include <xtensor/containers/xadapt.hpp>
@@ -66,29 +62,18 @@ class MLModelService : public Service {
         return xt::adapt(std::move(data), std::move(size), xt::no_ownership(), std::move(shape));
     }
 
-    // Now that we have a factory for our tensor view types, use mpl
-    // to produce a variant over tensor views over the primitive types
-    // we care about, which are the signed and unsigned fixed width
-    // integral types and the two floating point types.
-    using signed_integral_base_types =
-        boost::mpl::list<std::int8_t, std::int16_t, std::int32_t, std::int64_t>;
-
-    using unsigned_integral_base_types =
-        boost::mpl::transform_view<signed_integral_base_types,
-                                   std::make_unsigned<boost::mpl::placeholders::_1>>;
-
-    using integral_base_types =
-        boost::mpl::joint_view<signed_integral_base_types, unsigned_integral_base_types>;
-
-    using fp_base_types = boost::mpl::list<float, double>;
-
-    using base_types = boost::mpl::joint_view<integral_base_types, fp_base_types>;
-
-    using tensor_view_types =
-        boost::mpl::transform_view<base_types, make_tensor_view_<boost::mpl::placeholders::_1>>;
-
-    // Union the tensor views for the various base types.
-    using tensor_views = boost::make_variant_over<tensor_view_types>::type;
+    // A variant over tensor views for each of the supported primitive types:
+    // signed/unsigned fixed-width integers and the two floating-point types.
+    using tensor_views = std::variant<tensor_view<std::int8_t>,
+                                      tensor_view<std::uint8_t>,
+                                      tensor_view<std::int16_t>,
+                                      tensor_view<std::uint16_t>,
+                                      tensor_view<std::int32_t>,
+                                      tensor_view<std::uint32_t>,
+                                      tensor_view<std::int64_t>,
+                                      tensor_view<std::uint64_t>,
+                                      tensor_view<float>,
+                                      tensor_view<double>>;
 
     // Our parameters to and from the model come as named tensor_views.
     using named_tensor_views = std::unordered_map<std::string, tensor_views>;
@@ -146,7 +131,7 @@ class MLModelService : public Service {
 
         ProtoStruct extra;
 
-        static boost::optional<data_types> string_to_data_type(const std::string& str);
+        static std::optional<data_types> string_to_data_type(const std::string& str);
         static const char* data_type_to_string(data_types data_type);
 
         static data_types tensor_views_to_data_type(const tensor_views& view);
