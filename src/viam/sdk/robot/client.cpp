@@ -83,11 +83,6 @@ bool operator==(const RobotClient::frame_system_config& lhs,
                                          to_proto(rhs.kinematics).SerializeAsString();
 }
 
-bool operator==(const RobotClient::operation& lhs, const RobotClient::operation& rhs) {
-    return lhs.id == rhs.id && lhs.method == rhs.method && lhs.session_id == rhs.session_id &&
-           lhs.arguments == rhs.arguments && lhs.started == rhs.started;
-}
-
 struct RobotClient::impl {
     impl(std::unique_ptr<RobotService::Stub> stub, ViamChannel& channel)
         : stub(std::move(stub)), channel_(&channel) {}

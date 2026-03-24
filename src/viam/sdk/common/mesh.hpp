@@ -21,9 +21,8 @@ namespace sdk {
 struct mesh {
     std::string content_type;
     std::vector<unsigned char> data;
+    friend bool operator==(const mesh&, const mesh&) = default;
 };
-
-bool operator==(const mesh& lhs, const mesh& rhs);
 
 namespace proto_convert_details {
 

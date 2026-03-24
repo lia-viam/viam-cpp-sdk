@@ -19,12 +19,12 @@ namespace sdk {
 
 struct coordinates {
     double x, y, z;
-    friend bool operator==(const coordinates& lhs, const coordinates& rhs);
+    friend bool operator==(const coordinates&, const coordinates&) = default;
 };
 
 struct pose_orientation {
     double o_x, o_y, o_z;
-    friend bool operator==(const pose_orientation& lhs, const pose_orientation& rhs);
+    friend bool operator==(const pose_orientation&, const pose_orientation&) = default;
 };
 
 struct pose {
@@ -32,7 +32,7 @@ struct pose {
     pose_orientation orientation;
     double theta;
 
-    friend bool operator==(const pose& lhs, const pose& rhs);
+    friend bool operator==(const pose&, const pose&) = default;
     friend std::ostream& operator<<(std::ostream& os, const pose& v);
 };
 
@@ -43,7 +43,7 @@ struct pose_in_frame {
 
     std::string reference_frame;
     struct pose pose;
-    friend bool operator==(const pose_in_frame& lhs, const pose_in_frame& rhs);
+    friend bool operator==(const pose_in_frame&, const pose_in_frame&) = default;
     friend std::ostream& operator<<(std::ostream& os, const pose_in_frame& v);
 };
 

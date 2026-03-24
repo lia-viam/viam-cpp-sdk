@@ -36,16 +36,16 @@ struct box {
     double x;
     double y;
     double z;
-    friend bool operator==(const box& lhs, const box& rhs);
+    friend bool operator==(const box&, const box&) = default;
 };
 struct sphere {
     double radius;
-    friend bool operator==(const sphere& lhs, const sphere& rhs);
+    friend bool operator==(const sphere&, const sphere&) = default;
 };
 struct capsule {
     double radius;
     double length;
-    friend bool operator==(const capsule& lhs, const capsule& rhs);
+    friend bool operator==(const capsule&, const capsule&) = default;
 };
 
 using geometry_specifics = std::variant<struct box, struct sphere, struct capsule>;
@@ -89,7 +89,7 @@ struct geo_point {
     // aggregate initializers
     double longitude, latitude;
 
-    friend bool operator==(const geo_point& lhs, const geo_point& rhs);
+    friend bool operator==(const geo_point&, const geo_point&) = default;
     friend std::ostream& operator<<(std::ostream& os, const geo_point& v);
 };
 
@@ -98,7 +98,7 @@ struct geo_geometry {
     geo_point location;
     std::vector<GeometryConfig> geometries;
 
-    friend bool operator==(const geo_geometry& lhs, const geo_geometry& rhs);
+    friend bool operator==(const geo_geometry&, const geo_geometry&) = default;
 };
 
 namespace proto_convert_details {

@@ -1,16 +1,9 @@
 #include <viam/sdk/common/kinematics.hpp>
 
-#include <tuple>
-
 #include <viam/api/common/v1/common.pb.h>
 
 namespace viam {
 namespace sdk {
-
-bool operator==(const KinematicsDataURDF& lhs, const KinematicsDataURDF& rhs) {
-    return std::tie(lhs.bytes, lhs.meshes_by_urdf_filepath) ==
-           std::tie(rhs.bytes, rhs.meshes_by_urdf_filepath);
-}
 
 namespace proto_convert_details {
 

@@ -30,6 +30,7 @@ struct raw_bytes {
     raw_bytes(std::vector<unsigned char> b) : bytes(std::move(b)) {}
 
     std::vector<unsigned char> bytes{};
+    friend bool operator==(const raw_bytes&, const raw_bytes&) = default;
 };
 
 // Comparison operator helper for the data types below
@@ -54,7 +55,7 @@ struct KinematicsDataURDF : raw_bytes<KinematicsDataURDF> {
     using raw_bytes<KinematicsDataURDF>::raw_bytes;
     std::map<std::string, mesh> meshes_by_urdf_filepath;
 
-    friend bool operator==(const KinematicsDataURDF& lhs, const KinematicsDataURDF& rhs);
+    friend bool operator==(const KinematicsDataURDF&, const KinematicsDataURDF&) = default;
 };
 
 /// @brief The kinematics of a component.

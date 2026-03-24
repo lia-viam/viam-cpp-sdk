@@ -34,6 +34,7 @@ class Motor : public Component, public Stoppable {
         /// power), based on the last command sent to motor. If the last command was a stop command,
         /// this value will be 0.
         double power_pct;
+        friend bool operator==(const power_status&, const power_status&) = default;
     };
 
     /// @struct properties
@@ -41,6 +42,7 @@ class Motor : public Component, public Stoppable {
     struct properties {
         /// True if the motor supports reporting its position
         bool position_reporting;
+        friend bool operator==(const properties&, const properties&) = default;
     };
 
     /// @brief Sets the percentage of the motor's total power that should be employed.
@@ -183,8 +185,6 @@ struct API::traits<Motor> {
     static API api();
 };
 
-bool operator==(const Motor::power_status& lhs, const Motor::power_status& rhs);
-bool operator==(const Motor::properties& lhs, const Motor::properties& rhs);
 
 }  // namespace sdk
 }  // namespace viam

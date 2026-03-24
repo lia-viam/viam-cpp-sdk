@@ -27,6 +27,7 @@ class MovementSensor : public Component {
     struct compassheading {
         /// A number from 0-359 where 0 is North, 90 is East, 180 is South, and 270 is   West
         double value;
+        friend bool operator==(const compassheading&, const compassheading&) = default;
     };
 
     /// @struct orientation
@@ -40,6 +41,7 @@ class MovementSensor : public Component {
     struct position {
         geo_point coordinate;
         float altitude_m;
+        friend bool operator==(const position&, const position&) = default;
     };
 
     /// @struct properties
@@ -50,6 +52,7 @@ class MovementSensor : public Component {
         bool position_supported;
         bool compass_heading_supported;
         bool linear_acceleration_supported;
+        friend bool operator==(const properties&, const properties&) = default;
     };
 
     API api() const override;
@@ -127,9 +130,5 @@ struct API::traits<MovementSensor> {
     static API api();
 };
 
-bool operator==(const MovementSensor::compassheading& lhs,
-                const MovementSensor::compassheading& rhs);
-bool operator==(const MovementSensor::position& lhs, const MovementSensor::position& rhs);
-bool operator==(const MovementSensor::properties& lhs, const MovementSensor::properties& rhs);
 }  // namespace sdk
 }  // namespace viam

@@ -37,6 +37,8 @@ class WorldState {
 
         /// The reference frame in which the geometries were observed.
         std::string reference_frame;
+
+        friend bool operator==(const geometries_in_frame&, const geometries_in_frame&) = default;
     };
 
     /// @brief Represents a pose and two reference frames.
@@ -51,6 +53,8 @@ class WorldState {
         pose_in_frame pose_in_observer_frame;
         /// An optional geometry representing the physical object at this transform's location.
         std::optional<GeometryConfig> physical_object;
+
+        friend bool operator==(const transform&, const transform&) = default;
     };
 
     WorldState() = default;
@@ -69,9 +73,7 @@ class WorldState {
     // another, or to attach moving geometries to the frame system.
     const std::vector<transform>& transforms() const;
 
-    friend bool operator==(const WorldState& lhs, const WorldState& rhs);
-    friend bool operator==(const geometries_in_frame& lhs, const geometries_in_frame& rhs);
-    friend bool operator==(const transform& lhs, const transform& rhs);
+    friend bool operator==(const WorldState&, const WorldState&) = default;
 
    private:
     std::vector<geometries_in_frame> obstacles_;

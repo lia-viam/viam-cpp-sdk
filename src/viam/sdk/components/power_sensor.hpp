@@ -27,6 +27,7 @@ class PowerSensor : public Component {
         double volts;
         /// Whether the voltage is DC or AC.
         bool is_ac;
+        friend bool operator==(const voltage&, const voltage&) = default;
     };
 
     /// @struct current
@@ -35,6 +36,7 @@ class PowerSensor : public Component {
         double amperes;
         /// Whether the current is DC or AC.
         bool is_ac;
+        friend bool operator==(const current&, const current&) = default;
     };
 
     API api() const override;
@@ -97,7 +99,5 @@ struct API::traits<PowerSensor> {
     static API api();
 };
 
-bool operator==(const PowerSensor::voltage& lhs, const PowerSensor::voltage& rhs);
-bool operator==(const PowerSensor::current& lhs, const PowerSensor::current& rhs);
 }  // namespace sdk
 }  // namespace viam

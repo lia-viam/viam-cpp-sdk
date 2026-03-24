@@ -41,9 +41,7 @@ class Navigation : public Service {
         geo_point location;
         double compass_heading;
 
-        bool operator==(const LocationResponse& rhs) const {
-            return compass_heading == rhs.compass_heading && location == rhs.location;
-        }
+        bool operator==(const LocationResponse&) const = default;
     };
 
     /// @struct Properties
@@ -68,10 +66,7 @@ class Navigation : public Service {
         std::string destination_waypoint_id;
         std::vector<geo_point> geopoints;
 
-        bool operator==(const Path& rhs) const {
-            return destination_waypoint_id == rhs.destination_waypoint_id &&
-                   geopoints == rhs.geopoints;
-        }
+        bool operator==(const Path&) const = default;
     };
 
     API api() const override;

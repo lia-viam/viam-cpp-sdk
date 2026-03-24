@@ -68,7 +68,7 @@ class RobotClient {
         std::optional<std::string> session_id;
         ProtoStruct arguments;
         std::optional<time_pt> started;
-        friend bool operator==(const operation& lhs, const operation& rhs);
+        friend bool operator==(const operation&, const operation&) = default;
     };
 
     explicit RobotClient(ViamChannel channel);

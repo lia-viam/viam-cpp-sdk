@@ -27,7 +27,7 @@ struct obstacle_detector {
     /// @brief The name of the camera component to be used for obstacle detection.
     std::string camera;
 
-    friend bool operator==(const obstacle_detector& lhs, const obstacle_detector& rhs);
+    friend bool operator==(const obstacle_detector&, const obstacle_detector&) = default;
     friend std::ostream& operator<<(std::ostream& os, const obstacle_detector& v);
 };
 
@@ -53,7 +53,7 @@ struct motion_configuration {
     /// @brief Optional angular velocity to target when turning
     std::optional<double> angular_degs_per_sec;
 
-    friend bool operator==(const motion_configuration& lhs, const motion_configuration& rhs);
+    friend bool operator==(const motion_configuration&, const motion_configuration&) = default;
     friend std::ostream& operator<<(std::ostream& os, const motion_configuration& v);
 };
 
@@ -92,7 +92,7 @@ class Motion : public Service {
         /// re-plan reason if re-planning was necessary.
         std::optional<std::string> reason;
 
-        friend bool operator==(const plan_status& lhs, const plan_status& rhs);
+        friend bool operator==(const plan_status&, const plan_status&) = default;
     };
 
     /// @struct plan_status_with_id
@@ -111,7 +111,7 @@ class Motion : public Service {
         /// @brief The plan status.
         plan_status status;
 
-        friend bool operator==(const plan_status_with_id& lhs, const plan_status_with_id& rhs);
+        friend bool operator==(const plan_status_with_id&, const plan_status_with_id&) = default;
     };
 
     /// @brief An individual "step", representing the state each component (keyed as a fully
@@ -136,7 +136,7 @@ class Motion : public Service {
         /// @brief An ordered list of plan steps.
         std::vector<step> steps;
 
-        friend bool operator==(const plan& lhs, const plan& rhs);
+        friend bool operator==(const plan&, const plan&) = default;
     };
 
     /// @struct plan_with_status
@@ -153,7 +153,7 @@ class Motion : public Service {
         /// @brief The prior status changes that have happened during plan execution.
         std::vector<plan_status> status_history;
 
-        friend bool operator==(const plan_with_status& lhs, const plan_with_status& rhs);
+        friend bool operator==(const plan_with_status&, const plan_with_status&) = default;
     };
 
     /// @struct linear_constraint

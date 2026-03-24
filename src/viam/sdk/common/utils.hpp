@@ -41,9 +41,8 @@ using time_pt = std::chrono::time_point<std::chrono::system_clock, std::chrono::
 
 struct response_metadata {
     time_pt captured_at;
+    friend bool operator==(const response_metadata&, const response_metadata&) = default;
 };
-
-bool operator==(const response_metadata& lhs, const response_metadata& rhs);
 
 namespace proto_convert_details {
 

@@ -21,10 +21,6 @@
 namespace viam {
 namespace sdk {
 
-bool operator==(const response_metadata& lhs, const response_metadata& rhs) {
-    return lhs.captured_at == rhs.captured_at;
-}
-
 namespace proto_convert_details {
 
 void to_proto_impl<time_pt>::operator()(time_pt tp, google::protobuf::Timestamp* result) const {
