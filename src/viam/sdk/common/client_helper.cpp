@@ -5,6 +5,7 @@
 #include <grpcpp/client_context.h>
 #include <grpcpp/support/status.h>
 
+#include <viam/sdk/common/private/tracing.hpp>
 #include <viam/sdk/common/private/version_metadata.hpp>
 #include <viam/sdk/log/logging.hpp>
 
@@ -36,6 +37,7 @@ ClientContext::ClientContext(const ViamChannel& channel) : ClientContext() {
     if (channel.auth_token().has_value()) {
         wrapped_context_->AddMetadata("authorization", "Bearer " + *channel.auth_token());
     }
+    impl::inject_trace_context(wrapped_context_.get());
 }
 
 ClientContext::~ClientContext() = default;

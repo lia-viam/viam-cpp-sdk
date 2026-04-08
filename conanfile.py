@@ -18,11 +18,13 @@ class ViamCppSdkRecipe(ConanFile):
 
     options = {
         "offline_proto_generation": [True, False],
+        "opentelemetry_tracing": [True, False],
         "shared": [True, False]
     }
 
     default_options = {
         "offline_proto_generation": True,
+        "opentelemetry_tracing": True,
         "shared": True
     }
 
@@ -68,6 +70,9 @@ class ViamCppSdkRecipe(ConanFile):
         self.requires('protobuf/[>=3.17.1 <6.30.0]')
         self.requires(self._xtensor_requires(), transitive_headers=True)
 
+        if self.options.opentelemetry_tracing:
+            self.requires('opentelemetry-cpp/[>=1.9.0]')
+
     def build_requirements(self):
         if self.options.offline_proto_generation:
             self.tool_requires(self._grpc_requires())
@@ -80,6 +85,7 @@ class ViamCppSdkRecipe(ConanFile):
         tc = CMakeToolchain(self)
 
         tc.cache_variables["VIAMCPPSDK_OFFLINE_PROTO_GENERATION"] = self.options.offline_proto_generation
+        tc.cache_variables["VIAMCPPSDK_OPENTELEMETRY_TRACING"] = self.options.opentelemetry_tracing
         tc.cache_variables["VIAMCPPSDK_USE_DYNAMIC_PROTOS"] = True
 
         # We don't want to constrain these for conan builds because we
@@ -152,6 +158,11 @@ class ViamCppSdkRecipe(ConanFile):
             "xtensor::xtensor",
             "viamapi",
         ])
+
+        if self.options.opentelemetry_tracing:
+            self.cpp_info.components["viamsdk"].requires.append(
+                "opentelemetry-cpp::opentelemetry_trace"
+            )
 
         self.cpp_info.components["viamsdk"].requires.extend([
             "viam_rust_utils"

@@ -62,6 +62,7 @@ target_sources(viamsdk
     common/client_helper.cpp
     common/exception.cpp
     common/instance.cpp
+    common/tracing.cpp
     common/kinematics.cpp
     common/linear_algebra.cpp
     common/mesh.cpp
@@ -307,6 +308,11 @@ target_link_libraries(viamsdk
   PRIVATE ${VIAMCPPSDK_PROTOBUF_LIBRARIES}
   PRIVATE Threads::Threads
 )
+
+if (VIAMCPPSDK_OPENTELEMETRY_TRACING)
+  target_compile_definitions(viamsdk PRIVATE VIAMCPPSDK_OPENTELEMETRY_TRACING)
+  target_link_libraries(viamsdk PRIVATE opentelemetry-cpp::trace)
+endif()
 
 # if the `viam_rust_utils` target exists then we should use it. If not then
 # we're probably on a non-x86_64 windows build or some other platform without

@@ -6,6 +6,7 @@
 #include <grpcpp/support/status.h>
 
 #include <viam/sdk/common/grpc_fwd.hpp>
+#include <viam/sdk/common/private/tracing.hpp>
 
 #include <viam/sdk/resource/resource_server_base.hpp>
 #include <viam/sdk/rpc/private/grpc_context_observer.hpp>
@@ -29,6 +30,8 @@ class ServiceHelperBase {
 
    protected:
     explicit ServiceHelperBase(const char* method) noexcept : method_{method} {}
+
+    const char* method_name() const noexcept { return method_; }
 
    private:
     const char* method_;
@@ -56,7 +59,10 @@ class ServiceHelper : public ServiceHelperBase {
             return failNoResource(request_->name());
         }
         const GrpcContextObserver::Enable enable{*context_};
-        return invoke_(std::forward<Callable>(callable), std::move(resource));
+        impl::ServerSpanGuard span_guard{context_, method_name()};
+        const auto status = invoke_(std::forward<Callable>(callable), std::move(resource));
+        span_guard.commit(static_cast<int>(status.error_code()));
+        return status;
     } catch (const std::exception& xcp) {
         return failStdException(xcp);
     } catch (...) {
