@@ -3,21 +3,17 @@
 
 #include <stdexcept>
 
-namespace {{ .ModuleName }} {
+namespace {{ .ModuleSnake }} {
 
 
 {{ .ModelPascal }}::{{ .ModelPascal }}(const viam::sdk::Dependencies& deps, const viam::sdk::ResourceConfig& cfg)
     : Switch(cfg.name()) {
-    this->reconfigure(deps, cfg);
+    throw std::runtime_error("constructor not implemented");
 }
 
 
 std::vector<std::string> {{ .ModelPascal }}::validate(const viam::sdk::ResourceConfig& cfg) {
     throw std::runtime_error("\"validate\" not implemented");
-}
-
-void {{ .ModelPascal }}::reconfigure(const viam::sdk::Dependencies& deps, const viam::sdk::ResourceConfig& cfg) {
-    throw std::runtime_error("\"reconfigure\" not implemented");
 }
 
 void {{ .ModelPascal }}::set_position(
@@ -42,5 +38,10 @@ viam::sdk::ProtoStruct {{ .ModelPascal }}::do_command(const viam::sdk::ProtoStru
     throw std::logic_error("\"do_command\" not implemented");
 }
 
-} // namespace {{ .ModuleName }}
+viam::sdk::ProtoStruct {{ .ModelPascal }}::get_status()
+{
+    throw std::logic_error("\"get_status\" not implemented");
+}
+
+} // namespace {{ .ModuleSnake }}
 
