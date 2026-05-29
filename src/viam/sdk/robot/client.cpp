@@ -30,6 +30,7 @@
 #include <viam/sdk/rpc/dial.hpp>
 #include <viam/sdk/rpc/private/viam_grpc_channel.hpp>
 #include <viam/sdk/services/service.hpp>
+#include <viam/sdk/tracing/private/tracer.hpp>
 
 namespace viam {
 namespace sdk {
@@ -92,6 +93,7 @@ struct RobotClient::impl {
             boost::log::core::get()->remove_sink(log_sink);
             LogManager::get().enable_console_logging();
         }
+        sdk::impl::Tracer::get().shutdown_provider();
     }
 
     template <typename Method>
@@ -304,7 +306,9 @@ std::vector<Name> RobotClient::resource_names() const {
 void RobotClient::log(const std::string& name,
                       const std::string& level,
                       const std::string& message,
-                      time_pt time) {
+                      time_pt time,
+                      const std::string& file,
+                      unsigned int line) {
     if (!impl_) {
         throw std::runtime_error("Tried to send logs to robot when it was not connected");
     }
@@ -317,6 +321,12 @@ void RobotClient::log(const std::string& name,
     log.set_level(level);
     *log.mutable_message() = message;
     *log.mutable_time() = to_proto(time);
+
+    auto& fields = *log.mutable_caller()->mutable_fields();
+    fields["Defined"].set_bool_value(true);
+    fields["File"].set_string_value(file);
+    fields["Line"].set_number_value(line);
+
     req.mutable_logs()->Add(std::move(log));
 
     robot::v1::LogResponse resp;
@@ -329,6 +339,19 @@ void RobotClient::log(const std::string& name,
                             << "Error sending log message over grpc: " << response.error_message()
                             << response.error_details();
     }
+}
+
+bool RobotClient::send_traces(const robot::v1::SendTracesRequest* req) {
+    if (!impl_) {
+        return false;
+    }
+    robot::v1::SendTracesResponse resp;
+    ClientContext ctx;
+    return impl_->stub->SendTraces(ctx, *req, &resp).ok();
+}
+
+void RobotClient::connect_tracing() {
+    sdk::impl::Tracer::get().initialize_provider(this);
 }
 
 std::shared_ptr<RobotClient> RobotClient::with_channel(ViamChannel channel,
@@ -439,6 +462,25 @@ std::ostream& operator<<(std::ostream& os, const RobotClient::status& v) {
     }
     os << status;
     return os;
+}
+
+pose_in_frame RobotClient::get_pose(const std::string& component_name) {
+    return get_pose(component_name, "world", {}, {});
+}
+
+pose_in_frame RobotClient::get_pose(const std::string& component_name,
+                                    const std::string& destination_frame,
+                                    const std::vector<WorldState::transform>& additional_transforms,
+                                    const ProtoStruct& extra) {
+    return impl::client_helper(impl_, &RobotService::Stub::GetPose)
+        .with([&](auto& req) {
+            req.set_component_name(component_name);
+            req.set_destination_frame(destination_frame);
+            *req.mutable_supplemental_transforms() =
+                sdk::impl::to_repeated_field(additional_transforms);
+            *req.mutable_extra() = to_proto(extra);
+        })
+        .invoke([](const auto& resp) { return from_proto(resp.pose()); });
 }
 
 RobotClient::status RobotClient::get_machine_status() const {
