@@ -42,13 +42,15 @@ std::ostream& operator<<(std::ostream& os, const motion_configuration& v) {
         os << "\tlinear_m_per_sec: " << v.linear_m_per_sec.value() << ",\n";
     }
     if (v.obstacle_polling_frequency_hz.has_value()) {
-        os << "\tobstacle_polling_frequency_hz: " << v.obstacle_polling_frequency_hz.value() << ",\n";
+        os << "\tobstacle_polling_frequency_hz: " << v.obstacle_polling_frequency_hz.value()
+           << ",\n";
     }
     if (v.plan_deviation_m.has_value()) {
         os << "\tplan_deviation_m: " << v.plan_deviation_m.value() << ",\n";
     }
     if (v.position_polling_frequency_hz.has_value()) {
-        os << "\tposition_polling_frequency_hz: " << v.position_polling_frequency_hz.value() << ",\n";
+        os << "\tposition_polling_frequency_hz: " << v.position_polling_frequency_hz.value()
+           << ",\n";
     }
     os << "}";
 

@@ -29,11 +29,11 @@ class Motor : public Component, public Stoppable {
     /// @brief Information about power-state of the motor
     struct power_status {
         /// True if the motor is on
-        bool is_on;
+        bool is_on = false;
         /// Power percent (from 0 to 1, or from -1 to 1 for motors that support negative
         /// power), based on the last command sent to motor. If the last command was a stop command,
         /// this value will be 0.
-        double power_pct;
+        double power_pct = 0.0;
         friend bool operator==(const power_status&, const power_status&) = default;
     };
 
@@ -41,7 +41,7 @@ class Motor : public Component, public Stoppable {
     /// @brief Features that the specific motor supports
     struct properties {
         /// True if the motor supports reporting its position
-        bool position_reporting;
+        bool position_reporting = false;
         friend bool operator==(const properties&, const properties&) = default;
     };
 
@@ -188,7 +188,6 @@ template <>
 struct API::traits<Motor> {
     static API api();
 };
-
 
 }  // namespace sdk
 }  // namespace viam

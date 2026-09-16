@@ -89,6 +89,8 @@ std::string bytes_to_string(const std::vector<unsigned char>& b) {
     return img_string;
 }
 
+namespace {
+
 std::string random_debug_key() {
     static const char alphanum[] = "abcdefghijklmnopqrstuvwxyz";
     static std::default_random_engine generator(
@@ -104,6 +106,8 @@ std::string random_debug_key() {
 
     return key;
 }
+
+}  // namespace
 
 ProtoStruct debug_map() {
     return debug_map(random_debug_key());

@@ -23,27 +23,27 @@ enum OrientationType {
 };
 
 struct axis_angles {
-    double x, y, z, theta;
+    double x = 0.0, y = 0.0, z = 0.0, theta = 0.0;
 };
 
 struct euler_angles {
-    double yaw, roll, pitch;
+    double yaw = 0.0, roll = 0.0, pitch = 0.0;
 };
 
 struct orientation_vector {
-    double x, y, z, theta;
+    double x = 0.0, y = 0.0, z = 0.0, theta = 0.0;
 };
 
 struct orientation_vector_degrees {
-    double x, y, z, theta;
+    double x = 0.0, y = 0.0, z = 0.0, theta = 0.0;
 };
 
 struct quaternion {
-    double x, y, z, w;
+    double x = 0.0, y = 0.0, z = 0.0, w = 0.0;
 };
 
 struct translation {
-    double x, y, z;
+    double x = 0.0, y = 0.0, z = 0.0;
 };
 
 namespace proto_convert_details {

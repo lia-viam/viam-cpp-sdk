@@ -173,8 +173,7 @@ ViamChannel ViamChannel::dial_initial(const char* uri,
     return ViamChannel(nullptr);
 }
 
-ViamChannel ViamChannel::dial(const char* uri,
-                              const std::optional<ViamChannel::Options>& options) {
+ViamChannel ViamChannel::dial(const char* uri, const std::optional<ViamChannel::Options>& options) {
     const ViamChannel::Options opts = options.value_or(ViamChannel::Options());
 
     // If this flag is passed, try to dial directly through grpc if possible.

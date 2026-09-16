@@ -15,14 +15,11 @@
 #pragma once
 
 #include <iosfwd>
+#include <optional>
+#include <variant>
 
 #include <boost/mp11/algorithm.hpp>
 #include <boost/mp11/list.hpp>
-#include <boost/mpl/joint_view.hpp>
-#include <boost/mpl/list.hpp>
-#include <boost/mpl/transform_view.hpp>
-#include <boost/variant/variant.hpp>
-#include <variant>
 
 #if defined(__has_include) && (__has_include(<xtensor/containers/xadapt.hpp>))
 #include <xtensor/containers/xadapt.hpp>
@@ -125,7 +122,7 @@ class MLModelService : public Service {
             enum : std::uint8_t {
                 k_label_type_tensor_value = 0,
                 k_label_type_tensor_axis = 1,
-            } label_type;
+            } label_type = k_label_type_tensor_value;
         };
 
         std::string name;
@@ -142,7 +139,7 @@ class MLModelService : public Service {
             k_uint64 = 7,
             k_float32 = 8,
             k_float64 = 9,
-        } data_type;
+        } data_type = data_types::k_int8;
 
         std::vector<int> shape;
         std::vector<file> associated_files;

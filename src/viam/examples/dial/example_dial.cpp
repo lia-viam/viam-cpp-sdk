@@ -2,8 +2,8 @@
 #include <functional>
 #include <iostream>
 #include <memory>
-#include <ostream>
 #include <optional>
+#include <ostream>
 #include <string>
 #include <vector>
 

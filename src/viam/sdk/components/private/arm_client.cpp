@@ -1,11 +1,14 @@
 #include <viam/sdk/components/private/arm_client.hpp>
 
-#include <grpcpp/channel.h>
+#include <exception>
+#include <thread>
+#include <utility>
 
-#include <viam/api/component/arm/v1/arm.grpc.pb.h>
-#include <viam/api/component/arm/v1/arm.pb.h>
+#include <grpcpp/channel.h>
+#include <grpcpp/client_context.h>
 
 #include <viam/sdk/common/client_helper.hpp>
+#include <viam/sdk/common/exception.hpp>
 #include <viam/sdk/common/kinematics.hpp>
 
 namespace viam {
@@ -70,8 +73,7 @@ void ArmClient::move_through_joint_positions(const std::vector<std::vector<doubl
                               }
                           }
                       };
-                      std::visit(Visitor{request.mutable_options()},
-                                           *options.max_vel_degs_per_sec);
+                      std::visit(Visitor{request.mutable_options()}, *options.max_vel_degs_per_sec);
                   }
 
                   if (options.max_acc_degs_per_sec2) {
@@ -87,7 +89,11 @@ void ArmClient::move_through_joint_positions(const std::vector<std::vector<doubl
                           }
                       };
                       std::visit(Visitor{request.mutable_options()},
-                                           *options.max_acc_degs_per_sec2);
+                                 *options.max_acc_degs_per_sec2);
+                  }
+
+                  if (options.max_tcp_speed) {
+                      request.mutable_options()->set_max_tcp_speed(*options.max_tcp_speed);
                   }
 
                   for (const auto& pos : positions) {
@@ -97,6 +103,126 @@ void ArmClient::move_through_joint_positions(const std::vector<std::vector<doubl
                   }
               })
         .invoke();
+}
+
+Arm::stream_outcome ArmClient::move_through_joint_positions_streamed(
+    const std::function<std::optional<std::vector<Arm::trajectory_point>>()>& batch_source,
+    const std::function<bool(Arm::trajectory_update)>& update_handler,
+    const ProtoStruct& extra) {
+    // TODO(RSDK-14164): this hand-rolls the BiDi stream because the SDK has no
+    // BiDi client/server helper yet (RSDK-14164 tracks adding one). We use the
+    // SDK's `ClientContext` wrapper rather than a raw `grpc::ClientContext` so
+    // the call carries what `ClientHelper` would attach for a unary RPC: the
+    // authorization bearer token (needed for authenticated cloud connections),
+    // the `viam_client` version metadata, the macOS authority workaround
+    // (RSDK-5194), and the OpenTelemetry trace context.
+    ClientContext ctx(*channel_);
+    auto stream = stub_->MoveThroughJointPositionsStreamed(ctx);
+
+    // Send `Init` on the caller's thread. If it fails there is no reader yet and
+    // nothing to tear down, so reap and report right here.
+    ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest init_msg;
+    init_msg.set_name(this->name());
+    *init_msg.mutable_init()->mutable_extra() = to_proto(extra);
+    if (!stream->Write(init_msg)) {
+        const ::grpc::Status status = stream->Finish();
+        throw GRPCException(&status);
+    }
+
+    // `Init` is on the wire, so from here we always have a reader to join and a
+    // call to reap. `Finish()` reaps the RPC (an unfinished call leaks), and its
+    // status is how a server-side fault reaches us on the happy path: the server
+    // aborts, our `Read` and `Write` stop returning true, and `Finish()` reports
+    // why. We need that status for the decision after the block, and a destructor
+    // runs too late to hand back a value, so the guard's only job is to run
+    // `Finish()` on every way out of the block and stash its status where we can
+    // read it. The reader is joined inside the block, so `Finish()` runs after it.
+    ::grpc::Status finish_status;
+    struct finish_guard {
+        decltype(stream.get()) str;
+        ::grpc::Status& status;
+        ~finish_guard() {
+            status = str->Finish();
+        }
+    };
+
+    bool update_handler_halted = false;
+    std::exception_ptr writer_exception;
+    std::exception_ptr reader_exception;
+
+    {
+        const finish_guard guard{stream.get(), finish_status};
+
+        // Reader thread: read each response, turn it into a `trajectory_update`,
+        // and pass it to `update_handler`. A false return is the caller asking to
+        // stop, so we remember it and report `k_halted_by_update_handler` rather
+        // than the `CANCELLED` status our own `try_cancel` produces.
+        std::thread reader([&] {
+            try {
+                ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse pb;
+                while (stream->Read(&pb)) {
+                    if (!update_handler(from_proto(pb))) {
+                        update_handler_halted = true;
+                        ctx.try_cancel();
+                        return;
+                    }
+                }
+            } catch (...) {
+                reader_exception = std::current_exception();
+                ctx.try_cancel();
+            }
+        });
+
+        // Writer loop, on the caller's thread. Validating the trajectory is the
+        // server's job (a caller need not reach the server through this client at
+        // all), so we send whatever we are handed.
+        try {
+            while (auto batch = batch_source()) {
+                ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest msg;
+                auto* trajectory_batch = msg.mutable_batch();
+                for (const auto& point : *batch) {
+                    *trajectory_batch->add_points() = to_proto(point);
+                }
+                if (!stream->Write(msg)) {
+                    // A false `Write` means the server closed the stream, which
+                    // it does when it faults or cancels. Nothing to raise here:
+                    // stop writing, and `finish_status` will carry the server's
+                    // terminal status.
+                    break;
+                }
+            }
+            stream->WritesDone();
+        } catch (...) {
+            writer_exception = std::current_exception();
+            ctx.try_cancel();
+        }
+
+        reader.join();
+    }
+
+    // A stashed callback exception beats `finish_status`, which after a
+    // `try_cancel` is a bare `CANCELLED` that hides the real cause. If both
+    // threads stashed one, take the writer's: it runs on the caller's thread and
+    // is the likely origin (say `batch_source` threw), while the reader's is
+    // usually just fallout from the same teardown.
+    if (writer_exception) {
+        std::rethrow_exception(writer_exception);
+    }
+    if (reader_exception) {
+        std::rethrow_exception(reader_exception);
+    }
+
+    // A caller-driven stop is an outcome, not a fault. Checked after the
+    // rethrows: if the caller stopped and something also faulted, the fault wins.
+    if (update_handler_halted) {
+        return Arm::stream_outcome::k_halted_by_update_handler;
+    }
+
+    if (!finish_status.ok()) {
+        throw GRPCException(&finish_status);
+    }
+
+    return Arm::stream_outcome::k_completed;
 }
 
 bool ArmClient::is_moving() {
@@ -143,6 +269,30 @@ std::vector<GeometryConfig> ArmClient::get_geometries(const ProtoStruct& extra) 
     return make_client_helper(this, *stub_, &StubType::GetGeometries)
         .with(extra)
         .invoke([](auto& response) { return from_proto(response); });
+}
+
+Arm::properties ArmClient::get_properties(const ProtoStruct& extra) {
+    return make_client_helper(this, *stub_, &StubType::GetProperties)
+        .with(extra)
+        .invoke([](auto& response) { return from_proto(response); });
+}
+
+void ArmClient::set_manual_mode(bool manual_mode,
+                                std::chrono::seconds enabled_for,
+                                const ProtoStruct& extra) {
+    return make_client_helper(this, *stub_, &StubType::SetManualMode)
+        .with(extra,
+              [&](auto& request) {
+                  request.set_manual_mode(manual_mode);
+                  request.set_enabled_for(static_cast<int32_t>(enabled_for.count()));
+              })
+        .invoke();
+}
+
+bool ArmClient::get_manual_mode(const ProtoStruct& extra) {
+    return make_client_helper(this, *stub_, &StubType::GetManualMode)
+        .with(extra)
+        .invoke([](auto& response) { return response.manual_mode(); });
 }
 
 }  // namespace impl

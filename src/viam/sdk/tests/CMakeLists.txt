@@ -51,7 +51,10 @@ target_include_directories(viamsdk_test
 
 target_link_libraries(viamsdk_test
   PUBLIC viam-cpp-sdk::viamsdk
-  PUBLIC Boost::unit_test_framework
+  # Tests compile Boost.Test in via boost/test/included/unit_test.hpp; also linking
+  # the shared unit_test_framework duplicates its globals and double-frees at exit.
+  # Sources here must therefore not reference Boost.Test (see test_utils.hpp).
+  PUBLIC Boost::headers
 )
 
 viamcppsdk_link_viam_api(viamsdk_test PUBLIC)
@@ -85,3 +88,9 @@ viamcppsdk_add_boost_test(test_sensor.cpp)
 viamcppsdk_add_boost_test(test_servo.cpp)
 viamcppsdk_add_boost_test(test_switch.cpp)
 viamcppsdk_add_boost_test(test_robot.cpp)
+viamcppsdk_add_boost_test(test_kinematics_model_table.cpp)
+
+target_compile_definitions(test_kinematics_model_table
+  PRIVATE
+    VIAMCPPSDK_TEST_TESTFILES_DIR="${CMAKE_CURRENT_SOURCE_DIR}/testfiles"
+)

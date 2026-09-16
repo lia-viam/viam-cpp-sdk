@@ -33,16 +33,16 @@ class Encoder : public Component {
     /// @struct position
     /// @brief reported position.
     struct position {
-        float value;
-        position_type type;
+        float value = 0.0f;
+        position_type type = position_type::unspecified;
         friend bool operator==(const position&, const position&) = default;
     };
 
     /// @struct properties
     /// @brief Encodes the supported modes of this encoder
     struct properties {
-        bool ticks_count_supported;
-        bool angle_degrees_supported;
+        bool ticks_count_supported = false;
+        bool angle_degrees_supported = false;
         friend bool operator==(const properties&, const properties&) = default;
     };
 
@@ -112,7 +112,6 @@ template <>
 struct API::traits<Encoder> {
     static API api();
 };
-
 
 }  // namespace sdk
 }  // namespace viam

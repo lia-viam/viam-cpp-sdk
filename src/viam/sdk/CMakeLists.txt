@@ -92,6 +92,7 @@ target_sources(viamsdk
     components/power_sensor.cpp
     components/private/arm_client.cpp
     components/private/arm_server.cpp
+    components/private/arm_trajectory_validation.cpp
     components/private/audio_in_server.cpp
     components/private/audio_in_client.cpp
     components/private/audio_out_client.cpp
@@ -139,6 +140,7 @@ target_sources(viamsdk
     module/service.cpp
     module/private/data_consumer_query.cpp
     referenceframe/frame.cpp
+    referenceframe/kinematics_model_table.cpp
     registry/registry.cpp
     resource/resource.cpp
     resource/resource_api.cpp
@@ -219,6 +221,7 @@ target_sources(viamsdk
       ../../viam/sdk/module/service.hpp
       ../../viam/sdk/module/signal_manager.hpp
       ../../viam/sdk/referenceframe/frame.hpp
+      ../../viam/sdk/referenceframe/kinematics_model_table.hpp
       ../../viam/sdk/registry/registry.hpp
       ../../viam/sdk/resource/resource.hpp
       ../../viam/sdk/resource/resource_api.hpp

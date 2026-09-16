@@ -40,7 +40,7 @@ const std::string kBuiltin = "builtin";
 using time_pt = std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds>;
 
 struct response_metadata {
-    time_pt captured_at;
+    time_pt captured_at = {};
     friend bool operator==(const response_metadata&, const response_metadata&) = default;
 };
 

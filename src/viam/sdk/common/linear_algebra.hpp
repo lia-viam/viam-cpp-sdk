@@ -35,8 +35,16 @@ struct Vector3 {
     /// Set the z value of the vector (can be chained)
     Vector3& set_z(scalar_type z);
 
-    std::array<scalar_type, 3> data;
+    std::array<scalar_type, 3> data = {};
 };
+
+inline bool operator==(const Vector3& a, const Vector3& b) {
+    return a.data == b.data;
+}
+
+inline bool operator!=(const Vector3& a, const Vector3& b) {
+    return !(a == b);
+}
 
 namespace proto_convert_details {
 

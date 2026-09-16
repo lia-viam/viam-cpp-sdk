@@ -33,6 +33,7 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "common/v1/common.pb.h"
 #include "google/api/annotations.pb.h"
+#include <google/protobuf/duration.pb.h>
 #include <google/protobuf/struct.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -64,15 +65,33 @@ extern GetJointPositionsRequestDefaultTypeInternal _GetJointPositionsRequest_def
 class GetJointPositionsResponse;
 struct GetJointPositionsResponseDefaultTypeInternal;
 extern GetJointPositionsResponseDefaultTypeInternal _GetJointPositionsResponse_default_instance_;
+class GetManualModeRequest;
+struct GetManualModeRequestDefaultTypeInternal;
+extern GetManualModeRequestDefaultTypeInternal _GetManualModeRequest_default_instance_;
+class GetManualModeResponse;
+struct GetManualModeResponseDefaultTypeInternal;
+extern GetManualModeResponseDefaultTypeInternal _GetManualModeResponse_default_instance_;
+class GetPropertiesRequest;
+struct GetPropertiesRequestDefaultTypeInternal;
+extern GetPropertiesRequestDefaultTypeInternal _GetPropertiesRequest_default_instance_;
+class GetPropertiesResponse;
+struct GetPropertiesResponseDefaultTypeInternal;
+extern GetPropertiesResponseDefaultTypeInternal _GetPropertiesResponse_default_instance_;
 class IsMovingRequest;
 struct IsMovingRequestDefaultTypeInternal;
 extern IsMovingRequestDefaultTypeInternal _IsMovingRequest_default_instance_;
 class IsMovingResponse;
 struct IsMovingResponseDefaultTypeInternal;
 extern IsMovingResponseDefaultTypeInternal _IsMovingResponse_default_instance_;
+class JointAccelerations;
+struct JointAccelerationsDefaultTypeInternal;
+extern JointAccelerationsDefaultTypeInternal _JointAccelerations_default_instance_;
 class JointPositions;
 struct JointPositionsDefaultTypeInternal;
 extern JointPositionsDefaultTypeInternal _JointPositions_default_instance_;
+class JointVelocities;
+struct JointVelocitiesDefaultTypeInternal;
+extern JointVelocitiesDefaultTypeInternal _JointVelocities_default_instance_;
 class MoveOptions;
 struct MoveOptionsDefaultTypeInternal;
 extern MoveOptionsDefaultTypeInternal _MoveOptions_default_instance_;
@@ -82,6 +101,21 @@ extern MoveThroughJointPositionsRequestDefaultTypeInternal _MoveThroughJointPosi
 class MoveThroughJointPositionsResponse;
 struct MoveThroughJointPositionsResponseDefaultTypeInternal;
 extern MoveThroughJointPositionsResponseDefaultTypeInternal _MoveThroughJointPositionsResponse_default_instance_;
+class MoveThroughJointPositionsStreamedRequest;
+struct MoveThroughJointPositionsStreamedRequestDefaultTypeInternal;
+extern MoveThroughJointPositionsStreamedRequestDefaultTypeInternal _MoveThroughJointPositionsStreamedRequest_default_instance_;
+class MoveThroughJointPositionsStreamedRequest_Init;
+struct MoveThroughJointPositionsStreamedRequest_InitDefaultTypeInternal;
+extern MoveThroughJointPositionsStreamedRequest_InitDefaultTypeInternal _MoveThroughJointPositionsStreamedRequest_Init_default_instance_;
+class MoveThroughJointPositionsStreamedRequest_TrajectoryBatch;
+struct MoveThroughJointPositionsStreamedRequest_TrajectoryBatchDefaultTypeInternal;
+extern MoveThroughJointPositionsStreamedRequest_TrajectoryBatchDefaultTypeInternal _MoveThroughJointPositionsStreamedRequest_TrajectoryBatch_default_instance_;
+class MoveThroughJointPositionsStreamedResponse;
+struct MoveThroughJointPositionsStreamedResponseDefaultTypeInternal;
+extern MoveThroughJointPositionsStreamedResponseDefaultTypeInternal _MoveThroughJointPositionsStreamedResponse_default_instance_;
+class MoveThroughJointPositionsStreamedResponse_BatchAck;
+struct MoveThroughJointPositionsStreamedResponse_BatchAckDefaultTypeInternal;
+extern MoveThroughJointPositionsStreamedResponse_BatchAckDefaultTypeInternal _MoveThroughJointPositionsStreamedResponse_BatchAck_default_instance_;
 class MoveToJointPositionsRequest;
 struct MoveToJointPositionsRequestDefaultTypeInternal;
 extern MoveToJointPositionsRequestDefaultTypeInternal _MoveToJointPositionsRequest_default_instance_;
@@ -94,6 +128,12 @@ extern MoveToPositionRequestDefaultTypeInternal _MoveToPositionRequest_default_i
 class MoveToPositionResponse;
 struct MoveToPositionResponseDefaultTypeInternal;
 extern MoveToPositionResponseDefaultTypeInternal _MoveToPositionResponse_default_instance_;
+class SetManualModeRequest;
+struct SetManualModeRequestDefaultTypeInternal;
+extern SetManualModeRequestDefaultTypeInternal _SetManualModeRequest_default_instance_;
+class SetManualModeResponse;
+struct SetManualModeResponseDefaultTypeInternal;
+extern SetManualModeResponseDefaultTypeInternal _SetManualModeResponse_default_instance_;
 class Status;
 struct StatusDefaultTypeInternal;
 extern StatusDefaultTypeInternal _Status_default_instance_;
@@ -103,6 +143,12 @@ extern StopRequestDefaultTypeInternal _StopRequest_default_instance_;
 class StopResponse;
 struct StopResponseDefaultTypeInternal;
 extern StopResponseDefaultTypeInternal _StopResponse_default_instance_;
+class TrajectoryPoint;
+struct TrajectoryPointDefaultTypeInternal;
+extern TrajectoryPointDefaultTypeInternal _TrajectoryPoint_default_instance_;
+class TrajectoryPoint_KinematicConstraints;
+struct TrajectoryPoint_KinematicConstraintsDefaultTypeInternal;
+extern TrajectoryPoint_KinematicConstraintsDefaultTypeInternal _TrajectoryPoint_KinematicConstraints_default_instance_;
 }  // namespace v1
 }  // namespace arm
 }  // namespace component
@@ -112,19 +158,34 @@ template<> ::viam::component::arm::v1::GetEndPositionRequest* Arena::CreateMaybe
 template<> ::viam::component::arm::v1::GetEndPositionResponse* Arena::CreateMaybeMessage<::viam::component::arm::v1::GetEndPositionResponse>(Arena*);
 template<> ::viam::component::arm::v1::GetJointPositionsRequest* Arena::CreateMaybeMessage<::viam::component::arm::v1::GetJointPositionsRequest>(Arena*);
 template<> ::viam::component::arm::v1::GetJointPositionsResponse* Arena::CreateMaybeMessage<::viam::component::arm::v1::GetJointPositionsResponse>(Arena*);
+template<> ::viam::component::arm::v1::GetManualModeRequest* Arena::CreateMaybeMessage<::viam::component::arm::v1::GetManualModeRequest>(Arena*);
+template<> ::viam::component::arm::v1::GetManualModeResponse* Arena::CreateMaybeMessage<::viam::component::arm::v1::GetManualModeResponse>(Arena*);
+template<> ::viam::component::arm::v1::GetPropertiesRequest* Arena::CreateMaybeMessage<::viam::component::arm::v1::GetPropertiesRequest>(Arena*);
+template<> ::viam::component::arm::v1::GetPropertiesResponse* Arena::CreateMaybeMessage<::viam::component::arm::v1::GetPropertiesResponse>(Arena*);
 template<> ::viam::component::arm::v1::IsMovingRequest* Arena::CreateMaybeMessage<::viam::component::arm::v1::IsMovingRequest>(Arena*);
 template<> ::viam::component::arm::v1::IsMovingResponse* Arena::CreateMaybeMessage<::viam::component::arm::v1::IsMovingResponse>(Arena*);
+template<> ::viam::component::arm::v1::JointAccelerations* Arena::CreateMaybeMessage<::viam::component::arm::v1::JointAccelerations>(Arena*);
 template<> ::viam::component::arm::v1::JointPositions* Arena::CreateMaybeMessage<::viam::component::arm::v1::JointPositions>(Arena*);
+template<> ::viam::component::arm::v1::JointVelocities* Arena::CreateMaybeMessage<::viam::component::arm::v1::JointVelocities>(Arena*);
 template<> ::viam::component::arm::v1::MoveOptions* Arena::CreateMaybeMessage<::viam::component::arm::v1::MoveOptions>(Arena*);
 template<> ::viam::component::arm::v1::MoveThroughJointPositionsRequest* Arena::CreateMaybeMessage<::viam::component::arm::v1::MoveThroughJointPositionsRequest>(Arena*);
 template<> ::viam::component::arm::v1::MoveThroughJointPositionsResponse* Arena::CreateMaybeMessage<::viam::component::arm::v1::MoveThroughJointPositionsResponse>(Arena*);
+template<> ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest* Arena::CreateMaybeMessage<::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest>(Arena*);
+template<> ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* Arena::CreateMaybeMessage<::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init>(Arena*);
+template<> ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* Arena::CreateMaybeMessage<::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch>(Arena*);
+template<> ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse* Arena::CreateMaybeMessage<::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse>(Arena*);
+template<> ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* Arena::CreateMaybeMessage<::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck>(Arena*);
 template<> ::viam::component::arm::v1::MoveToJointPositionsRequest* Arena::CreateMaybeMessage<::viam::component::arm::v1::MoveToJointPositionsRequest>(Arena*);
 template<> ::viam::component::arm::v1::MoveToJointPositionsResponse* Arena::CreateMaybeMessage<::viam::component::arm::v1::MoveToJointPositionsResponse>(Arena*);
 template<> ::viam::component::arm::v1::MoveToPositionRequest* Arena::CreateMaybeMessage<::viam::component::arm::v1::MoveToPositionRequest>(Arena*);
 template<> ::viam::component::arm::v1::MoveToPositionResponse* Arena::CreateMaybeMessage<::viam::component::arm::v1::MoveToPositionResponse>(Arena*);
+template<> ::viam::component::arm::v1::SetManualModeRequest* Arena::CreateMaybeMessage<::viam::component::arm::v1::SetManualModeRequest>(Arena*);
+template<> ::viam::component::arm::v1::SetManualModeResponse* Arena::CreateMaybeMessage<::viam::component::arm::v1::SetManualModeResponse>(Arena*);
 template<> ::viam::component::arm::v1::Status* Arena::CreateMaybeMessage<::viam::component::arm::v1::Status>(Arena*);
 template<> ::viam::component::arm::v1::StopRequest* Arena::CreateMaybeMessage<::viam::component::arm::v1::StopRequest>(Arena*);
 template<> ::viam::component::arm::v1::StopResponse* Arena::CreateMaybeMessage<::viam::component::arm::v1::StopResponse>(Arena*);
+template<> ::viam::component::arm::v1::TrajectoryPoint* Arena::CreateMaybeMessage<::viam::component::arm::v1::TrajectoryPoint>(Arena*);
+template<> ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* Arena::CreateMaybeMessage<::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace viam {
 namespace component {
@@ -609,6 +670,318 @@ class JointPositions final :
 };
 // -------------------------------------------------------------------
 
+class JointVelocities final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.JointVelocities) */ {
+ public:
+  inline JointVelocities() : JointVelocities(nullptr) {}
+  ~JointVelocities() override;
+  explicit PROTOBUF_CONSTEXPR JointVelocities(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  JointVelocities(const JointVelocities& from);
+  JointVelocities(JointVelocities&& from) noexcept
+    : JointVelocities() {
+    *this = ::std::move(from);
+  }
+
+  inline JointVelocities& operator=(const JointVelocities& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline JointVelocities& operator=(JointVelocities&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const JointVelocities& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const JointVelocities* internal_default_instance() {
+    return reinterpret_cast<const JointVelocities*>(
+               &_JointVelocities_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(JointVelocities& a, JointVelocities& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(JointVelocities* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(JointVelocities* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  JointVelocities* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<JointVelocities>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const JointVelocities& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const JointVelocities& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(JointVelocities* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.JointVelocities";
+  }
+  protected:
+  explicit JointVelocities(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kValuesFieldNumber = 1,
+  };
+  // repeated double values = 1 [json_name = "values"];
+  int values_size() const;
+  private:
+  int _internal_values_size() const;
+  public:
+  void clear_values();
+  private:
+  double _internal_values(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+      _internal_values() const;
+  void _internal_add_values(double value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+      _internal_mutable_values();
+  public:
+  double values(int index) const;
+  void set_values(int index, double value);
+  void add_values(double value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+      values() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+      mutable_values();
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.JointVelocities)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double > values_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class JointAccelerations final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.JointAccelerations) */ {
+ public:
+  inline JointAccelerations() : JointAccelerations(nullptr) {}
+  ~JointAccelerations() override;
+  explicit PROTOBUF_CONSTEXPR JointAccelerations(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  JointAccelerations(const JointAccelerations& from);
+  JointAccelerations(JointAccelerations&& from) noexcept
+    : JointAccelerations() {
+    *this = ::std::move(from);
+  }
+
+  inline JointAccelerations& operator=(const JointAccelerations& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline JointAccelerations& operator=(JointAccelerations&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const JointAccelerations& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const JointAccelerations* internal_default_instance() {
+    return reinterpret_cast<const JointAccelerations*>(
+               &_JointAccelerations_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(JointAccelerations& a, JointAccelerations& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(JointAccelerations* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(JointAccelerations* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  JointAccelerations* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<JointAccelerations>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const JointAccelerations& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const JointAccelerations& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(JointAccelerations* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.JointAccelerations";
+  }
+  protected:
+  explicit JointAccelerations(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kValuesFieldNumber = 1,
+  };
+  // repeated double values = 1 [json_name = "values"];
+  int values_size() const;
+  private:
+  int _internal_values_size() const;
+  public:
+  void clear_values();
+  private:
+  double _internal_values(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+      _internal_values() const;
+  void _internal_add_values(double value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+      _internal_mutable_values();
+  public:
+  double values(int index) const;
+  void set_values(int index, double value);
+  void add_values(double value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+      values() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+      mutable_values();
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.JointAccelerations)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< double > values_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
 class GetJointPositionsRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.GetJointPositionsRequest) */ {
  public:
@@ -657,7 +1030,7 @@ class GetJointPositionsRequest final :
                &_GetJointPositionsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(GetJointPositionsRequest& a, GetJointPositionsRequest& b) {
     a.Swap(&b);
@@ -825,7 +1198,7 @@ class GetJointPositionsResponse final :
                &_GetJointPositionsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   friend void swap(GetJointPositionsResponse& a, GetJointPositionsResponse& b) {
     a.Swap(&b);
@@ -977,7 +1350,7 @@ class MoveToPositionRequest final :
                &_MoveToPositionRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(MoveToPositionRequest& a, MoveToPositionRequest& b) {
     a.Swap(&b);
@@ -1164,7 +1537,7 @@ class MoveToPositionResponse final :
                &_MoveToPositionResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   friend void swap(MoveToPositionResponse& a, MoveToPositionResponse& b) {
     a.Swap(&b);
@@ -1281,7 +1654,7 @@ class MoveToJointPositionsRequest final :
                &_MoveToJointPositionsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    9;
 
   friend void swap(MoveToJointPositionsRequest& a, MoveToJointPositionsRequest& b) {
     a.Swap(&b);
@@ -1468,7 +1841,7 @@ class MoveToJointPositionsResponse final :
                &_MoveToJointPositionsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   friend void swap(MoveToJointPositionsResponse& a, MoveToJointPositionsResponse& b) {
     a.Swap(&b);
@@ -1585,7 +1958,7 @@ class MoveThroughJointPositionsRequest final :
                &_MoveThroughJointPositionsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    11;
 
   friend void swap(MoveThroughJointPositionsRequest& a, MoveThroughJointPositionsRequest& b) {
     a.Swap(&b);
@@ -1793,7 +2166,7 @@ class MoveThroughJointPositionsResponse final :
                &_MoveThroughJointPositionsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    12;
 
   friend void swap(MoveThroughJointPositionsResponse& a, MoveThroughJointPositionsResponse& b) {
     a.Swap(&b);
@@ -1862,6 +2235,1211 @@ class MoveThroughJointPositionsResponse final :
 };
 // -------------------------------------------------------------------
 
+class TrajectoryPoint_KinematicConstraints final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.TrajectoryPoint.KinematicConstraints) */ {
+ public:
+  inline TrajectoryPoint_KinematicConstraints() : TrajectoryPoint_KinematicConstraints(nullptr) {}
+  ~TrajectoryPoint_KinematicConstraints() override;
+  explicit PROTOBUF_CONSTEXPR TrajectoryPoint_KinematicConstraints(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TrajectoryPoint_KinematicConstraints(const TrajectoryPoint_KinematicConstraints& from);
+  TrajectoryPoint_KinematicConstraints(TrajectoryPoint_KinematicConstraints&& from) noexcept
+    : TrajectoryPoint_KinematicConstraints() {
+    *this = ::std::move(from);
+  }
+
+  inline TrajectoryPoint_KinematicConstraints& operator=(const TrajectoryPoint_KinematicConstraints& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TrajectoryPoint_KinematicConstraints& operator=(TrajectoryPoint_KinematicConstraints&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TrajectoryPoint_KinematicConstraints& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TrajectoryPoint_KinematicConstraints* internal_default_instance() {
+    return reinterpret_cast<const TrajectoryPoint_KinematicConstraints*>(
+               &_TrajectoryPoint_KinematicConstraints_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  friend void swap(TrajectoryPoint_KinematicConstraints& a, TrajectoryPoint_KinematicConstraints& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TrajectoryPoint_KinematicConstraints* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TrajectoryPoint_KinematicConstraints* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TrajectoryPoint_KinematicConstraints* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TrajectoryPoint_KinematicConstraints>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TrajectoryPoint_KinematicConstraints& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const TrajectoryPoint_KinematicConstraints& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TrajectoryPoint_KinematicConstraints* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.TrajectoryPoint.KinematicConstraints";
+  }
+  protected:
+  explicit TrajectoryPoint_KinematicConstraints(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kVelocitiesFieldNumber = 1,
+    kAccelerationsFieldNumber = 2,
+  };
+  // .viam.component.arm.v1.JointVelocities velocities = 1 [json_name = "velocities"];
+  bool has_velocities() const;
+  private:
+  bool _internal_has_velocities() const;
+  public:
+  void clear_velocities();
+  const ::viam::component::arm::v1::JointVelocities& velocities() const;
+  PROTOBUF_NODISCARD ::viam::component::arm::v1::JointVelocities* release_velocities();
+  ::viam::component::arm::v1::JointVelocities* mutable_velocities();
+  void set_allocated_velocities(::viam::component::arm::v1::JointVelocities* velocities);
+  private:
+  const ::viam::component::arm::v1::JointVelocities& _internal_velocities() const;
+  ::viam::component::arm::v1::JointVelocities* _internal_mutable_velocities();
+  public:
+  void unsafe_arena_set_allocated_velocities(
+      ::viam::component::arm::v1::JointVelocities* velocities);
+  ::viam::component::arm::v1::JointVelocities* unsafe_arena_release_velocities();
+
+  // optional .viam.component.arm.v1.JointAccelerations accelerations = 2 [json_name = "accelerations"];
+  bool has_accelerations() const;
+  private:
+  bool _internal_has_accelerations() const;
+  public:
+  void clear_accelerations();
+  const ::viam::component::arm::v1::JointAccelerations& accelerations() const;
+  PROTOBUF_NODISCARD ::viam::component::arm::v1::JointAccelerations* release_accelerations();
+  ::viam::component::arm::v1::JointAccelerations* mutable_accelerations();
+  void set_allocated_accelerations(::viam::component::arm::v1::JointAccelerations* accelerations);
+  private:
+  const ::viam::component::arm::v1::JointAccelerations& _internal_accelerations() const;
+  ::viam::component::arm::v1::JointAccelerations* _internal_mutable_accelerations();
+  public:
+  void unsafe_arena_set_allocated_accelerations(
+      ::viam::component::arm::v1::JointAccelerations* accelerations);
+  ::viam::component::arm::v1::JointAccelerations* unsafe_arena_release_accelerations();
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.TrajectoryPoint.KinematicConstraints)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::viam::component::arm::v1::JointVelocities* velocities_;
+  ::viam::component::arm::v1::JointAccelerations* accelerations_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TrajectoryPoint final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.TrajectoryPoint) */ {
+ public:
+  inline TrajectoryPoint() : TrajectoryPoint(nullptr) {}
+  ~TrajectoryPoint() override;
+  explicit PROTOBUF_CONSTEXPR TrajectoryPoint(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TrajectoryPoint(const TrajectoryPoint& from);
+  TrajectoryPoint(TrajectoryPoint&& from) noexcept
+    : TrajectoryPoint() {
+    *this = ::std::move(from);
+  }
+
+  inline TrajectoryPoint& operator=(const TrajectoryPoint& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TrajectoryPoint& operator=(TrajectoryPoint&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TrajectoryPoint& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TrajectoryPoint* internal_default_instance() {
+    return reinterpret_cast<const TrajectoryPoint*>(
+               &_TrajectoryPoint_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    14;
+
+  friend void swap(TrajectoryPoint& a, TrajectoryPoint& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TrajectoryPoint* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TrajectoryPoint* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TrajectoryPoint* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TrajectoryPoint>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TrajectoryPoint& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const TrajectoryPoint& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TrajectoryPoint* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.TrajectoryPoint";
+  }
+  protected:
+  explicit TrajectoryPoint(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef TrajectoryPoint_KinematicConstraints KinematicConstraints;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTimeFieldNumber = 1,
+    kPositionsFieldNumber = 2,
+    kConstraintsFieldNumber = 3,
+  };
+  // .google.protobuf.Duration time = 1 [json_name = "time"];
+  bool has_time() const;
+  private:
+  bool _internal_has_time() const;
+  public:
+  void clear_time();
+  const ::PROTOBUF_NAMESPACE_ID::Duration& time() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Duration* release_time();
+  ::PROTOBUF_NAMESPACE_ID::Duration* mutable_time();
+  void set_allocated_time(::PROTOBUF_NAMESPACE_ID::Duration* time);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Duration& _internal_time() const;
+  ::PROTOBUF_NAMESPACE_ID::Duration* _internal_mutable_time();
+  public:
+  void unsafe_arena_set_allocated_time(
+      ::PROTOBUF_NAMESPACE_ID::Duration* time);
+  ::PROTOBUF_NAMESPACE_ID::Duration* unsafe_arena_release_time();
+
+  // .viam.component.arm.v1.JointPositions positions = 2 [json_name = "positions"];
+  bool has_positions() const;
+  private:
+  bool _internal_has_positions() const;
+  public:
+  void clear_positions();
+  const ::viam::component::arm::v1::JointPositions& positions() const;
+  PROTOBUF_NODISCARD ::viam::component::arm::v1::JointPositions* release_positions();
+  ::viam::component::arm::v1::JointPositions* mutable_positions();
+  void set_allocated_positions(::viam::component::arm::v1::JointPositions* positions);
+  private:
+  const ::viam::component::arm::v1::JointPositions& _internal_positions() const;
+  ::viam::component::arm::v1::JointPositions* _internal_mutable_positions();
+  public:
+  void unsafe_arena_set_allocated_positions(
+      ::viam::component::arm::v1::JointPositions* positions);
+  ::viam::component::arm::v1::JointPositions* unsafe_arena_release_positions();
+
+  // optional .viam.component.arm.v1.TrajectoryPoint.KinematicConstraints constraints = 3 [json_name = "constraints"];
+  bool has_constraints() const;
+  private:
+  bool _internal_has_constraints() const;
+  public:
+  void clear_constraints();
+  const ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints& constraints() const;
+  PROTOBUF_NODISCARD ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* release_constraints();
+  ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* mutable_constraints();
+  void set_allocated_constraints(::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* constraints);
+  private:
+  const ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints& _internal_constraints() const;
+  ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* _internal_mutable_constraints();
+  public:
+  void unsafe_arena_set_allocated_constraints(
+      ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* constraints);
+  ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* unsafe_arena_release_constraints();
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.TrajectoryPoint)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::Duration* time_;
+  ::viam::component::arm::v1::JointPositions* positions_;
+  ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* constraints_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MoveThroughJointPositionsStreamedRequest_Init final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.Init) */ {
+ public:
+  inline MoveThroughJointPositionsStreamedRequest_Init() : MoveThroughJointPositionsStreamedRequest_Init(nullptr) {}
+  ~MoveThroughJointPositionsStreamedRequest_Init() override;
+  explicit PROTOBUF_CONSTEXPR MoveThroughJointPositionsStreamedRequest_Init(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MoveThroughJointPositionsStreamedRequest_Init(const MoveThroughJointPositionsStreamedRequest_Init& from);
+  MoveThroughJointPositionsStreamedRequest_Init(MoveThroughJointPositionsStreamedRequest_Init&& from) noexcept
+    : MoveThroughJointPositionsStreamedRequest_Init() {
+    *this = ::std::move(from);
+  }
+
+  inline MoveThroughJointPositionsStreamedRequest_Init& operator=(const MoveThroughJointPositionsStreamedRequest_Init& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MoveThroughJointPositionsStreamedRequest_Init& operator=(MoveThroughJointPositionsStreamedRequest_Init&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MoveThroughJointPositionsStreamedRequest_Init& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MoveThroughJointPositionsStreamedRequest_Init* internal_default_instance() {
+    return reinterpret_cast<const MoveThroughJointPositionsStreamedRequest_Init*>(
+               &_MoveThroughJointPositionsStreamedRequest_Init_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  friend void swap(MoveThroughJointPositionsStreamedRequest_Init& a, MoveThroughJointPositionsStreamedRequest_Init& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MoveThroughJointPositionsStreamedRequest_Init* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MoveThroughJointPositionsStreamedRequest_Init* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MoveThroughJointPositionsStreamedRequest_Init* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MoveThroughJointPositionsStreamedRequest_Init>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const MoveThroughJointPositionsStreamedRequest_Init& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const MoveThroughJointPositionsStreamedRequest_Init& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MoveThroughJointPositionsStreamedRequest_Init* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.Init";
+  }
+  protected:
+  explicit MoveThroughJointPositionsStreamedRequest_Init(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kExtraFieldNumber = 99,
+  };
+  // .google.protobuf.Struct extra = 99 [json_name = "extra"];
+  bool has_extra() const;
+  private:
+  bool _internal_has_extra() const;
+  public:
+  void clear_extra();
+  const ::PROTOBUF_NAMESPACE_ID::Struct& extra() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Struct* release_extra();
+  ::PROTOBUF_NAMESPACE_ID::Struct* mutable_extra();
+  void set_allocated_extra(::PROTOBUF_NAMESPACE_ID::Struct* extra);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Struct& _internal_extra() const;
+  ::PROTOBUF_NAMESPACE_ID::Struct* _internal_mutable_extra();
+  public:
+  void unsafe_arena_set_allocated_extra(
+      ::PROTOBUF_NAMESPACE_ID::Struct* extra);
+  ::PROTOBUF_NAMESPACE_ID::Struct* unsafe_arena_release_extra();
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.Init)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::Struct* extra_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MoveThroughJointPositionsStreamedRequest_TrajectoryBatch final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.TrajectoryBatch) */ {
+ public:
+  inline MoveThroughJointPositionsStreamedRequest_TrajectoryBatch() : MoveThroughJointPositionsStreamedRequest_TrajectoryBatch(nullptr) {}
+  ~MoveThroughJointPositionsStreamedRequest_TrajectoryBatch() override;
+  explicit PROTOBUF_CONSTEXPR MoveThroughJointPositionsStreamedRequest_TrajectoryBatch(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MoveThroughJointPositionsStreamedRequest_TrajectoryBatch(const MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& from);
+  MoveThroughJointPositionsStreamedRequest_TrajectoryBatch(MoveThroughJointPositionsStreamedRequest_TrajectoryBatch&& from) noexcept
+    : MoveThroughJointPositionsStreamedRequest_TrajectoryBatch() {
+    *this = ::std::move(from);
+  }
+
+  inline MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& operator=(const MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& operator=(MoveThroughJointPositionsStreamedRequest_TrajectoryBatch&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* internal_default_instance() {
+    return reinterpret_cast<const MoveThroughJointPositionsStreamedRequest_TrajectoryBatch*>(
+               &_MoveThroughJointPositionsStreamedRequest_TrajectoryBatch_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    16;
+
+  friend void swap(MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& a, MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MoveThroughJointPositionsStreamedRequest_TrajectoryBatch>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.TrajectoryBatch";
+  }
+  protected:
+  explicit MoveThroughJointPositionsStreamedRequest_TrajectoryBatch(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPointsFieldNumber = 1,
+  };
+  // repeated .viam.component.arm.v1.TrajectoryPoint points = 1 [json_name = "points"];
+  int points_size() const;
+  private:
+  int _internal_points_size() const;
+  public:
+  void clear_points();
+  ::viam::component::arm::v1::TrajectoryPoint* mutable_points(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::viam::component::arm::v1::TrajectoryPoint >*
+      mutable_points();
+  private:
+  const ::viam::component::arm::v1::TrajectoryPoint& _internal_points(int index) const;
+  ::viam::component::arm::v1::TrajectoryPoint* _internal_add_points();
+  public:
+  const ::viam::component::arm::v1::TrajectoryPoint& points(int index) const;
+  ::viam::component::arm::v1::TrajectoryPoint* add_points();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::viam::component::arm::v1::TrajectoryPoint >&
+      points() const;
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.TrajectoryBatch)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::viam::component::arm::v1::TrajectoryPoint > points_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MoveThroughJointPositionsStreamedRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest) */ {
+ public:
+  inline MoveThroughJointPositionsStreamedRequest() : MoveThroughJointPositionsStreamedRequest(nullptr) {}
+  ~MoveThroughJointPositionsStreamedRequest() override;
+  explicit PROTOBUF_CONSTEXPR MoveThroughJointPositionsStreamedRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MoveThroughJointPositionsStreamedRequest(const MoveThroughJointPositionsStreamedRequest& from);
+  MoveThroughJointPositionsStreamedRequest(MoveThroughJointPositionsStreamedRequest&& from) noexcept
+    : MoveThroughJointPositionsStreamedRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline MoveThroughJointPositionsStreamedRequest& operator=(const MoveThroughJointPositionsStreamedRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MoveThroughJointPositionsStreamedRequest& operator=(MoveThroughJointPositionsStreamedRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MoveThroughJointPositionsStreamedRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  enum MessageCase {
+    kInit = 2,
+    kBatch = 3,
+    MESSAGE_NOT_SET = 0,
+  };
+
+  static inline const MoveThroughJointPositionsStreamedRequest* internal_default_instance() {
+    return reinterpret_cast<const MoveThroughJointPositionsStreamedRequest*>(
+               &_MoveThroughJointPositionsStreamedRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    17;
+
+  friend void swap(MoveThroughJointPositionsStreamedRequest& a, MoveThroughJointPositionsStreamedRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MoveThroughJointPositionsStreamedRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MoveThroughJointPositionsStreamedRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MoveThroughJointPositionsStreamedRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MoveThroughJointPositionsStreamedRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const MoveThroughJointPositionsStreamedRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const MoveThroughJointPositionsStreamedRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MoveThroughJointPositionsStreamedRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest";
+  }
+  protected:
+  explicit MoveThroughJointPositionsStreamedRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef MoveThroughJointPositionsStreamedRequest_Init Init;
+  typedef MoveThroughJointPositionsStreamedRequest_TrajectoryBatch TrajectoryBatch;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNameFieldNumber = 1,
+    kInitFieldNumber = 2,
+    kBatchFieldNumber = 3,
+  };
+  // string name = 1 [json_name = "name"];
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // .viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.Init init = 2 [json_name = "init"];
+  bool has_init() const;
+  private:
+  bool _internal_has_init() const;
+  public:
+  void clear_init();
+  const ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init& init() const;
+  PROTOBUF_NODISCARD ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* release_init();
+  ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* mutable_init();
+  void set_allocated_init(::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* init);
+  private:
+  const ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init& _internal_init() const;
+  ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* _internal_mutable_init();
+  public:
+  void unsafe_arena_set_allocated_init(
+      ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* init);
+  ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* unsafe_arena_release_init();
+
+  // .viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.TrajectoryBatch batch = 3 [json_name = "batch"];
+  bool has_batch() const;
+  private:
+  bool _internal_has_batch() const;
+  public:
+  void clear_batch();
+  const ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& batch() const;
+  PROTOBUF_NODISCARD ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* release_batch();
+  ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* mutable_batch();
+  void set_allocated_batch(::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* batch);
+  private:
+  const ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& _internal_batch() const;
+  ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* _internal_mutable_batch();
+  public:
+  void unsafe_arena_set_allocated_batch(
+      ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* batch);
+  ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* unsafe_arena_release_batch();
+
+  void clear_message();
+  MessageCase message_case() const;
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest)
+ private:
+  class _Internal;
+  void set_has_init();
+  void set_has_batch();
+
+  inline bool has_message() const;
+  inline void clear_has_message();
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+  union MessageUnion {
+    constexpr MessageUnion() : _constinit_{} {}
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+    ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* init_;
+    ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* batch_;
+  } message_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  uint32_t _oneof_case_[1];
+
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MoveThroughJointPositionsStreamedResponse_BatchAck final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.BatchAck) */ {
+ public:
+  inline MoveThroughJointPositionsStreamedResponse_BatchAck() : MoveThroughJointPositionsStreamedResponse_BatchAck(nullptr) {}
+  ~MoveThroughJointPositionsStreamedResponse_BatchAck() override;
+  explicit PROTOBUF_CONSTEXPR MoveThroughJointPositionsStreamedResponse_BatchAck(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MoveThroughJointPositionsStreamedResponse_BatchAck(const MoveThroughJointPositionsStreamedResponse_BatchAck& from);
+  MoveThroughJointPositionsStreamedResponse_BatchAck(MoveThroughJointPositionsStreamedResponse_BatchAck&& from) noexcept
+    : MoveThroughJointPositionsStreamedResponse_BatchAck() {
+    *this = ::std::move(from);
+  }
+
+  inline MoveThroughJointPositionsStreamedResponse_BatchAck& operator=(const MoveThroughJointPositionsStreamedResponse_BatchAck& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MoveThroughJointPositionsStreamedResponse_BatchAck& operator=(MoveThroughJointPositionsStreamedResponse_BatchAck&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MoveThroughJointPositionsStreamedResponse_BatchAck& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MoveThroughJointPositionsStreamedResponse_BatchAck* internal_default_instance() {
+    return reinterpret_cast<const MoveThroughJointPositionsStreamedResponse_BatchAck*>(
+               &_MoveThroughJointPositionsStreamedResponse_BatchAck_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    18;
+
+  friend void swap(MoveThroughJointPositionsStreamedResponse_BatchAck& a, MoveThroughJointPositionsStreamedResponse_BatchAck& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MoveThroughJointPositionsStreamedResponse_BatchAck* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MoveThroughJointPositionsStreamedResponse_BatchAck* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MoveThroughJointPositionsStreamedResponse_BatchAck* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MoveThroughJointPositionsStreamedResponse_BatchAck>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const MoveThroughJointPositionsStreamedResponse_BatchAck& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const MoveThroughJointPositionsStreamedResponse_BatchAck& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MoveThroughJointPositionsStreamedResponse_BatchAck* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.BatchAck";
+  }
+  protected:
+  explicit MoveThroughJointPositionsStreamedResponse_BatchAck(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kExtraFieldNumber = 99,
+  };
+  // .google.protobuf.Struct extra = 99 [json_name = "extra"];
+  bool has_extra() const;
+  private:
+  bool _internal_has_extra() const;
+  public:
+  void clear_extra();
+  const ::PROTOBUF_NAMESPACE_ID::Struct& extra() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Struct* release_extra();
+  ::PROTOBUF_NAMESPACE_ID::Struct* mutable_extra();
+  void set_allocated_extra(::PROTOBUF_NAMESPACE_ID::Struct* extra);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Struct& _internal_extra() const;
+  ::PROTOBUF_NAMESPACE_ID::Struct* _internal_mutable_extra();
+  public:
+  void unsafe_arena_set_allocated_extra(
+      ::PROTOBUF_NAMESPACE_ID::Struct* extra);
+  ::PROTOBUF_NAMESPACE_ID::Struct* unsafe_arena_release_extra();
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.BatchAck)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::Struct* extra_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MoveThroughJointPositionsStreamedResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse) */ {
+ public:
+  inline MoveThroughJointPositionsStreamedResponse() : MoveThroughJointPositionsStreamedResponse(nullptr) {}
+  ~MoveThroughJointPositionsStreamedResponse() override;
+  explicit PROTOBUF_CONSTEXPR MoveThroughJointPositionsStreamedResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MoveThroughJointPositionsStreamedResponse(const MoveThroughJointPositionsStreamedResponse& from);
+  MoveThroughJointPositionsStreamedResponse(MoveThroughJointPositionsStreamedResponse&& from) noexcept
+    : MoveThroughJointPositionsStreamedResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline MoveThroughJointPositionsStreamedResponse& operator=(const MoveThroughJointPositionsStreamedResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MoveThroughJointPositionsStreamedResponse& operator=(MoveThroughJointPositionsStreamedResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MoveThroughJointPositionsStreamedResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  enum MessageCase {
+    kAck = 1,
+    MESSAGE_NOT_SET = 0,
+  };
+
+  static inline const MoveThroughJointPositionsStreamedResponse* internal_default_instance() {
+    return reinterpret_cast<const MoveThroughJointPositionsStreamedResponse*>(
+               &_MoveThroughJointPositionsStreamedResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    19;
+
+  friend void swap(MoveThroughJointPositionsStreamedResponse& a, MoveThroughJointPositionsStreamedResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MoveThroughJointPositionsStreamedResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MoveThroughJointPositionsStreamedResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MoveThroughJointPositionsStreamedResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MoveThroughJointPositionsStreamedResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const MoveThroughJointPositionsStreamedResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const MoveThroughJointPositionsStreamedResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MoveThroughJointPositionsStreamedResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse";
+  }
+  protected:
+  explicit MoveThroughJointPositionsStreamedResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef MoveThroughJointPositionsStreamedResponse_BatchAck BatchAck;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAckFieldNumber = 1,
+  };
+  // .viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.BatchAck ack = 1 [json_name = "ack"];
+  bool has_ack() const;
+  private:
+  bool _internal_has_ack() const;
+  public:
+  void clear_ack();
+  const ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck& ack() const;
+  PROTOBUF_NODISCARD ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* release_ack();
+  ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* mutable_ack();
+  void set_allocated_ack(::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* ack);
+  private:
+  const ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck& _internal_ack() const;
+  ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* _internal_mutable_ack();
+  public:
+  void unsafe_arena_set_allocated_ack(
+      ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* ack);
+  ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* unsafe_arena_release_ack();
+
+  void clear_message();
+  MessageCase message_case() const;
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse)
+ private:
+  class _Internal;
+  void set_has_ack();
+
+  inline bool has_message() const;
+  inline void clear_has_message();
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  union MessageUnion {
+    constexpr MessageUnion() : _constinit_{} {}
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+    ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* ack_;
+  } message_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  uint32_t _oneof_case_[1];
+
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
 class StopRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.StopRequest) */ {
  public:
@@ -1910,7 +3488,7 @@ class StopRequest final :
                &_StopRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    20;
 
   friend void swap(StopRequest& a, StopRequest& b) {
     a.Swap(&b);
@@ -2077,7 +3655,7 @@ class StopResponse final :
                &_StopResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    21;
 
   friend void swap(StopResponse& a, StopResponse& b) {
     a.Swap(&b);
@@ -2194,7 +3772,7 @@ class Status final :
                &_Status_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    22;
 
   friend void swap(Status& a, Status& b) {
     a.Swap(&b);
@@ -2377,7 +3955,7 @@ class IsMovingRequest final :
                &_IsMovingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    23;
 
   friend void swap(IsMovingRequest& a, IsMovingRequest& b) {
     a.Swap(&b);
@@ -2525,7 +4103,7 @@ class IsMovingResponse final :
                &_IsMovingResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    24;
 
   friend void swap(IsMovingResponse& a, IsMovingResponse& b) {
     a.Swap(&b);
@@ -2668,7 +4246,7 @@ class MoveOptions final :
                &_MoveOptions_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    25;
 
   friend void swap(MoveOptions& a, MoveOptions& b) {
     a.Swap(&b);
@@ -2842,6 +4420,945 @@ class MoveOptions final :
   double max_vel_degs_per_sec_;
   double max_acc_degs_per_sec2_;
   double max_tcp_speed_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetManualModeRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.SetManualModeRequest) */ {
+ public:
+  inline SetManualModeRequest() : SetManualModeRequest(nullptr) {}
+  ~SetManualModeRequest() override;
+  explicit PROTOBUF_CONSTEXPR SetManualModeRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SetManualModeRequest(const SetManualModeRequest& from);
+  SetManualModeRequest(SetManualModeRequest&& from) noexcept
+    : SetManualModeRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SetManualModeRequest& operator=(const SetManualModeRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetManualModeRequest& operator=(SetManualModeRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetManualModeRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetManualModeRequest* internal_default_instance() {
+    return reinterpret_cast<const SetManualModeRequest*>(
+               &_SetManualModeRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    26;
+
+  friend void swap(SetManualModeRequest& a, SetManualModeRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SetManualModeRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetManualModeRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetManualModeRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SetManualModeRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SetManualModeRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const SetManualModeRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SetManualModeRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.SetManualModeRequest";
+  }
+  protected:
+  explicit SetManualModeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNameFieldNumber = 1,
+    kExtraFieldNumber = 99,
+    kManualModeFieldNumber = 2,
+    kEnabledForFieldNumber = 3,
+  };
+  // string name = 1 [json_name = "name"];
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // .google.protobuf.Struct extra = 99 [json_name = "extra"];
+  bool has_extra() const;
+  private:
+  bool _internal_has_extra() const;
+  public:
+  void clear_extra();
+  const ::PROTOBUF_NAMESPACE_ID::Struct& extra() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Struct* release_extra();
+  ::PROTOBUF_NAMESPACE_ID::Struct* mutable_extra();
+  void set_allocated_extra(::PROTOBUF_NAMESPACE_ID::Struct* extra);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Struct& _internal_extra() const;
+  ::PROTOBUF_NAMESPACE_ID::Struct* _internal_mutable_extra();
+  public:
+  void unsafe_arena_set_allocated_extra(
+      ::PROTOBUF_NAMESPACE_ID::Struct* extra);
+  ::PROTOBUF_NAMESPACE_ID::Struct* unsafe_arena_release_extra();
+
+  // bool manual_mode = 2 [json_name = "manualMode"];
+  void clear_manual_mode();
+  bool manual_mode() const;
+  void set_manual_mode(bool value);
+  private:
+  bool _internal_manual_mode() const;
+  void _internal_set_manual_mode(bool value);
+  public:
+
+  // int32 enabled_for = 3 [json_name = "enabledFor"];
+  void clear_enabled_for();
+  int32_t enabled_for() const;
+  void set_enabled_for(int32_t value);
+  private:
+  int32_t _internal_enabled_for() const;
+  void _internal_set_enabled_for(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.SetManualModeRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+  ::PROTOBUF_NAMESPACE_ID::Struct* extra_;
+  bool manual_mode_;
+  int32_t enabled_for_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetManualModeResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.SetManualModeResponse) */ {
+ public:
+  inline SetManualModeResponse() : SetManualModeResponse(nullptr) {}
+  explicit PROTOBUF_CONSTEXPR SetManualModeResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SetManualModeResponse(const SetManualModeResponse& from);
+  SetManualModeResponse(SetManualModeResponse&& from) noexcept
+    : SetManualModeResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline SetManualModeResponse& operator=(const SetManualModeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetManualModeResponse& operator=(SetManualModeResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetManualModeResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetManualModeResponse* internal_default_instance() {
+    return reinterpret_cast<const SetManualModeResponse*>(
+               &_SetManualModeResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    27;
+
+  friend void swap(SetManualModeResponse& a, SetManualModeResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SetManualModeResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetManualModeResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetManualModeResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SetManualModeResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const SetManualModeResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const SetManualModeResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.SetManualModeResponse";
+  }
+  protected:
+  explicit SetManualModeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.SetManualModeResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetManualModeRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.GetManualModeRequest) */ {
+ public:
+  inline GetManualModeRequest() : GetManualModeRequest(nullptr) {}
+  ~GetManualModeRequest() override;
+  explicit PROTOBUF_CONSTEXPR GetManualModeRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GetManualModeRequest(const GetManualModeRequest& from);
+  GetManualModeRequest(GetManualModeRequest&& from) noexcept
+    : GetManualModeRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline GetManualModeRequest& operator=(const GetManualModeRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetManualModeRequest& operator=(GetManualModeRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetManualModeRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetManualModeRequest* internal_default_instance() {
+    return reinterpret_cast<const GetManualModeRequest*>(
+               &_GetManualModeRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    28;
+
+  friend void swap(GetManualModeRequest& a, GetManualModeRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GetManualModeRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetManualModeRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetManualModeRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GetManualModeRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GetManualModeRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GetManualModeRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetManualModeRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.GetManualModeRequest";
+  }
+  protected:
+  explicit GetManualModeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNameFieldNumber = 1,
+    kExtraFieldNumber = 99,
+  };
+  // string name = 1 [json_name = "name"];
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // .google.protobuf.Struct extra = 99 [json_name = "extra"];
+  bool has_extra() const;
+  private:
+  bool _internal_has_extra() const;
+  public:
+  void clear_extra();
+  const ::PROTOBUF_NAMESPACE_ID::Struct& extra() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Struct* release_extra();
+  ::PROTOBUF_NAMESPACE_ID::Struct* mutable_extra();
+  void set_allocated_extra(::PROTOBUF_NAMESPACE_ID::Struct* extra);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Struct& _internal_extra() const;
+  ::PROTOBUF_NAMESPACE_ID::Struct* _internal_mutable_extra();
+  public:
+  void unsafe_arena_set_allocated_extra(
+      ::PROTOBUF_NAMESPACE_ID::Struct* extra);
+  ::PROTOBUF_NAMESPACE_ID::Struct* unsafe_arena_release_extra();
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.GetManualModeRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+  ::PROTOBUF_NAMESPACE_ID::Struct* extra_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetManualModeResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.GetManualModeResponse) */ {
+ public:
+  inline GetManualModeResponse() : GetManualModeResponse(nullptr) {}
+  ~GetManualModeResponse() override;
+  explicit PROTOBUF_CONSTEXPR GetManualModeResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GetManualModeResponse(const GetManualModeResponse& from);
+  GetManualModeResponse(GetManualModeResponse&& from) noexcept
+    : GetManualModeResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline GetManualModeResponse& operator=(const GetManualModeResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetManualModeResponse& operator=(GetManualModeResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetManualModeResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetManualModeResponse* internal_default_instance() {
+    return reinterpret_cast<const GetManualModeResponse*>(
+               &_GetManualModeResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    29;
+
+  friend void swap(GetManualModeResponse& a, GetManualModeResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GetManualModeResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetManualModeResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetManualModeResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GetManualModeResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GetManualModeResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GetManualModeResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetManualModeResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.GetManualModeResponse";
+  }
+  protected:
+  explicit GetManualModeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kManualModeFieldNumber = 1,
+  };
+  // bool manual_mode = 1 [json_name = "manualMode"];
+  void clear_manual_mode();
+  bool manual_mode() const;
+  void set_manual_mode(bool value);
+  private:
+  bool _internal_manual_mode() const;
+  void _internal_set_manual_mode(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.GetManualModeResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  bool manual_mode_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetPropertiesRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.GetPropertiesRequest) */ {
+ public:
+  inline GetPropertiesRequest() : GetPropertiesRequest(nullptr) {}
+  ~GetPropertiesRequest() override;
+  explicit PROTOBUF_CONSTEXPR GetPropertiesRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GetPropertiesRequest(const GetPropertiesRequest& from);
+  GetPropertiesRequest(GetPropertiesRequest&& from) noexcept
+    : GetPropertiesRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline GetPropertiesRequest& operator=(const GetPropertiesRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetPropertiesRequest& operator=(GetPropertiesRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetPropertiesRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetPropertiesRequest* internal_default_instance() {
+    return reinterpret_cast<const GetPropertiesRequest*>(
+               &_GetPropertiesRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    30;
+
+  friend void swap(GetPropertiesRequest& a, GetPropertiesRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GetPropertiesRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetPropertiesRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetPropertiesRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GetPropertiesRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GetPropertiesRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GetPropertiesRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetPropertiesRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.GetPropertiesRequest";
+  }
+  protected:
+  explicit GetPropertiesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNameFieldNumber = 1,
+    kExtraFieldNumber = 99,
+  };
+  // string name = 1 [json_name = "name"];
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // .google.protobuf.Struct extra = 99 [json_name = "extra"];
+  bool has_extra() const;
+  private:
+  bool _internal_has_extra() const;
+  public:
+  void clear_extra();
+  const ::PROTOBUF_NAMESPACE_ID::Struct& extra() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Struct* release_extra();
+  ::PROTOBUF_NAMESPACE_ID::Struct* mutable_extra();
+  void set_allocated_extra(::PROTOBUF_NAMESPACE_ID::Struct* extra);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Struct& _internal_extra() const;
+  ::PROTOBUF_NAMESPACE_ID::Struct* _internal_mutable_extra();
+  public:
+  void unsafe_arena_set_allocated_extra(
+      ::PROTOBUF_NAMESPACE_ID::Struct* extra);
+  ::PROTOBUF_NAMESPACE_ID::Struct* unsafe_arena_release_extra();
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.GetPropertiesRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+  ::PROTOBUF_NAMESPACE_ID::Struct* extra_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetPropertiesResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:viam.component.arm.v1.GetPropertiesResponse) */ {
+ public:
+  inline GetPropertiesResponse() : GetPropertiesResponse(nullptr) {}
+  ~GetPropertiesResponse() override;
+  explicit PROTOBUF_CONSTEXPR GetPropertiesResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GetPropertiesResponse(const GetPropertiesResponse& from);
+  GetPropertiesResponse(GetPropertiesResponse&& from) noexcept
+    : GetPropertiesResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline GetPropertiesResponse& operator=(const GetPropertiesResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetPropertiesResponse& operator=(GetPropertiesResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetPropertiesResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetPropertiesResponse* internal_default_instance() {
+    return reinterpret_cast<const GetPropertiesResponse*>(
+               &_GetPropertiesResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    31;
+
+  friend void swap(GetPropertiesResponse& a, GetPropertiesResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GetPropertiesResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetPropertiesResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetPropertiesResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GetPropertiesResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GetPropertiesResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GetPropertiesResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetPropertiesResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "viam.component.arm.v1.GetPropertiesResponse";
+  }
+  protected:
+  explicit GetPropertiesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSupportManualModeFieldNumber = 1,
+    kSupportCartesianCommandsFieldNumber = 2,
+  };
+  // bool support_manual_mode = 1 [json_name = "supportManualMode"];
+  void clear_support_manual_mode();
+  bool support_manual_mode() const;
+  void set_support_manual_mode(bool value);
+  private:
+  bool _internal_support_manual_mode() const;
+  void _internal_set_support_manual_mode(bool value);
+  public:
+
+  // bool support_cartesian_commands = 2 [json_name = "supportCartesianCommands"];
+  void clear_support_cartesian_commands();
+  bool support_cartesian_commands() const;
+  void set_support_cartesian_commands(bool value);
+  private:
+  bool _internal_support_cartesian_commands() const;
+  void _internal_set_support_cartesian_commands(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:viam.component.arm.v1.GetPropertiesResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  bool support_manual_mode_;
+  bool support_cartesian_commands_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_component_2farm_2fv1_2farm_2eproto;
 };
 // ===================================================================
@@ -3127,6 +5644,108 @@ JointPositions::_internal_mutable_values() {
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
 JointPositions::mutable_values() {
   // @@protoc_insertion_point(field_mutable_list:viam.component.arm.v1.JointPositions.values)
+  return _internal_mutable_values();
+}
+
+// -------------------------------------------------------------------
+
+// JointVelocities
+
+// repeated double values = 1 [json_name = "values"];
+inline int JointVelocities::_internal_values_size() const {
+  return values_.size();
+}
+inline int JointVelocities::values_size() const {
+  return _internal_values_size();
+}
+inline void JointVelocities::clear_values() {
+  values_.Clear();
+}
+inline double JointVelocities::_internal_values(int index) const {
+  return values_.Get(index);
+}
+inline double JointVelocities::values(int index) const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.JointVelocities.values)
+  return _internal_values(index);
+}
+inline void JointVelocities::set_values(int index, double value) {
+  values_.Set(index, value);
+  // @@protoc_insertion_point(field_set:viam.component.arm.v1.JointVelocities.values)
+}
+inline void JointVelocities::_internal_add_values(double value) {
+  values_.Add(value);
+}
+inline void JointVelocities::add_values(double value) {
+  _internal_add_values(value);
+  // @@protoc_insertion_point(field_add:viam.component.arm.v1.JointVelocities.values)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+JointVelocities::_internal_values() const {
+  return values_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+JointVelocities::values() const {
+  // @@protoc_insertion_point(field_list:viam.component.arm.v1.JointVelocities.values)
+  return _internal_values();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+JointVelocities::_internal_mutable_values() {
+  return &values_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+JointVelocities::mutable_values() {
+  // @@protoc_insertion_point(field_mutable_list:viam.component.arm.v1.JointVelocities.values)
+  return _internal_mutable_values();
+}
+
+// -------------------------------------------------------------------
+
+// JointAccelerations
+
+// repeated double values = 1 [json_name = "values"];
+inline int JointAccelerations::_internal_values_size() const {
+  return values_.size();
+}
+inline int JointAccelerations::values_size() const {
+  return _internal_values_size();
+}
+inline void JointAccelerations::clear_values() {
+  values_.Clear();
+}
+inline double JointAccelerations::_internal_values(int index) const {
+  return values_.Get(index);
+}
+inline double JointAccelerations::values(int index) const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.JointAccelerations.values)
+  return _internal_values(index);
+}
+inline void JointAccelerations::set_values(int index, double value) {
+  values_.Set(index, value);
+  // @@protoc_insertion_point(field_set:viam.component.arm.v1.JointAccelerations.values)
+}
+inline void JointAccelerations::_internal_add_values(double value) {
+  values_.Add(value);
+}
+inline void JointAccelerations::add_values(double value) {
+  _internal_add_values(value);
+  // @@protoc_insertion_point(field_add:viam.component.arm.v1.JointAccelerations.values)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+JointAccelerations::_internal_values() const {
+  return values_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
+JointAccelerations::values() const {
+  // @@protoc_insertion_point(field_list:viam.component.arm.v1.JointAccelerations.values)
+  return _internal_values();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+JointAccelerations::_internal_mutable_values() {
+  return &values_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
+JointAccelerations::mutable_values() {
+  // @@protoc_insertion_point(field_mutable_list:viam.component.arm.v1.JointAccelerations.values)
   return _internal_mutable_values();
 }
 
@@ -4099,6 +6718,979 @@ inline void MoveThroughJointPositionsRequest::set_allocated_extra(::PROTOBUF_NAM
 
 // -------------------------------------------------------------------
 
+// TrajectoryPoint_KinematicConstraints
+
+// .viam.component.arm.v1.JointVelocities velocities = 1 [json_name = "velocities"];
+inline bool TrajectoryPoint_KinematicConstraints::_internal_has_velocities() const {
+  return this != internal_default_instance() && velocities_ != nullptr;
+}
+inline bool TrajectoryPoint_KinematicConstraints::has_velocities() const {
+  return _internal_has_velocities();
+}
+inline void TrajectoryPoint_KinematicConstraints::clear_velocities() {
+  if (GetArenaForAllocation() == nullptr && velocities_ != nullptr) {
+    delete velocities_;
+  }
+  velocities_ = nullptr;
+}
+inline const ::viam::component::arm::v1::JointVelocities& TrajectoryPoint_KinematicConstraints::_internal_velocities() const {
+  const ::viam::component::arm::v1::JointVelocities* p = velocities_;
+  return p != nullptr ? *p : reinterpret_cast<const ::viam::component::arm::v1::JointVelocities&>(
+      ::viam::component::arm::v1::_JointVelocities_default_instance_);
+}
+inline const ::viam::component::arm::v1::JointVelocities& TrajectoryPoint_KinematicConstraints::velocities() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.TrajectoryPoint.KinematicConstraints.velocities)
+  return _internal_velocities();
+}
+inline void TrajectoryPoint_KinematicConstraints::unsafe_arena_set_allocated_velocities(
+    ::viam::component::arm::v1::JointVelocities* velocities) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(velocities_);
+  }
+  velocities_ = velocities;
+  if (velocities) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.TrajectoryPoint.KinematicConstraints.velocities)
+}
+inline ::viam::component::arm::v1::JointVelocities* TrajectoryPoint_KinematicConstraints::release_velocities() {
+  
+  ::viam::component::arm::v1::JointVelocities* temp = velocities_;
+  velocities_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::viam::component::arm::v1::JointVelocities* TrajectoryPoint_KinematicConstraints::unsafe_arena_release_velocities() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.TrajectoryPoint.KinematicConstraints.velocities)
+  
+  ::viam::component::arm::v1::JointVelocities* temp = velocities_;
+  velocities_ = nullptr;
+  return temp;
+}
+inline ::viam::component::arm::v1::JointVelocities* TrajectoryPoint_KinematicConstraints::_internal_mutable_velocities() {
+  
+  if (velocities_ == nullptr) {
+    auto* p = CreateMaybeMessage<::viam::component::arm::v1::JointVelocities>(GetArenaForAllocation());
+    velocities_ = p;
+  }
+  return velocities_;
+}
+inline ::viam::component::arm::v1::JointVelocities* TrajectoryPoint_KinematicConstraints::mutable_velocities() {
+  ::viam::component::arm::v1::JointVelocities* _msg = _internal_mutable_velocities();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.TrajectoryPoint.KinematicConstraints.velocities)
+  return _msg;
+}
+inline void TrajectoryPoint_KinematicConstraints::set_allocated_velocities(::viam::component::arm::v1::JointVelocities* velocities) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete velocities_;
+  }
+  if (velocities) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(velocities);
+    if (message_arena != submessage_arena) {
+      velocities = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, velocities, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  velocities_ = velocities;
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.TrajectoryPoint.KinematicConstraints.velocities)
+}
+
+// optional .viam.component.arm.v1.JointAccelerations accelerations = 2 [json_name = "accelerations"];
+inline bool TrajectoryPoint_KinematicConstraints::_internal_has_accelerations() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || accelerations_ != nullptr);
+  return value;
+}
+inline bool TrajectoryPoint_KinematicConstraints::has_accelerations() const {
+  return _internal_has_accelerations();
+}
+inline void TrajectoryPoint_KinematicConstraints::clear_accelerations() {
+  if (accelerations_ != nullptr) accelerations_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::viam::component::arm::v1::JointAccelerations& TrajectoryPoint_KinematicConstraints::_internal_accelerations() const {
+  const ::viam::component::arm::v1::JointAccelerations* p = accelerations_;
+  return p != nullptr ? *p : reinterpret_cast<const ::viam::component::arm::v1::JointAccelerations&>(
+      ::viam::component::arm::v1::_JointAccelerations_default_instance_);
+}
+inline const ::viam::component::arm::v1::JointAccelerations& TrajectoryPoint_KinematicConstraints::accelerations() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.TrajectoryPoint.KinematicConstraints.accelerations)
+  return _internal_accelerations();
+}
+inline void TrajectoryPoint_KinematicConstraints::unsafe_arena_set_allocated_accelerations(
+    ::viam::component::arm::v1::JointAccelerations* accelerations) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(accelerations_);
+  }
+  accelerations_ = accelerations;
+  if (accelerations) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.TrajectoryPoint.KinematicConstraints.accelerations)
+}
+inline ::viam::component::arm::v1::JointAccelerations* TrajectoryPoint_KinematicConstraints::release_accelerations() {
+  _has_bits_[0] &= ~0x00000001u;
+  ::viam::component::arm::v1::JointAccelerations* temp = accelerations_;
+  accelerations_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::viam::component::arm::v1::JointAccelerations* TrajectoryPoint_KinematicConstraints::unsafe_arena_release_accelerations() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.TrajectoryPoint.KinematicConstraints.accelerations)
+  _has_bits_[0] &= ~0x00000001u;
+  ::viam::component::arm::v1::JointAccelerations* temp = accelerations_;
+  accelerations_ = nullptr;
+  return temp;
+}
+inline ::viam::component::arm::v1::JointAccelerations* TrajectoryPoint_KinematicConstraints::_internal_mutable_accelerations() {
+  _has_bits_[0] |= 0x00000001u;
+  if (accelerations_ == nullptr) {
+    auto* p = CreateMaybeMessage<::viam::component::arm::v1::JointAccelerations>(GetArenaForAllocation());
+    accelerations_ = p;
+  }
+  return accelerations_;
+}
+inline ::viam::component::arm::v1::JointAccelerations* TrajectoryPoint_KinematicConstraints::mutable_accelerations() {
+  ::viam::component::arm::v1::JointAccelerations* _msg = _internal_mutable_accelerations();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.TrajectoryPoint.KinematicConstraints.accelerations)
+  return _msg;
+}
+inline void TrajectoryPoint_KinematicConstraints::set_allocated_accelerations(::viam::component::arm::v1::JointAccelerations* accelerations) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete accelerations_;
+  }
+  if (accelerations) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(accelerations);
+    if (message_arena != submessage_arena) {
+      accelerations = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, accelerations, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  accelerations_ = accelerations;
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.TrajectoryPoint.KinematicConstraints.accelerations)
+}
+
+// -------------------------------------------------------------------
+
+// TrajectoryPoint
+
+// .google.protobuf.Duration time = 1 [json_name = "time"];
+inline bool TrajectoryPoint::_internal_has_time() const {
+  return this != internal_default_instance() && time_ != nullptr;
+}
+inline bool TrajectoryPoint::has_time() const {
+  return _internal_has_time();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Duration& TrajectoryPoint::_internal_time() const {
+  const ::PROTOBUF_NAMESPACE_ID::Duration* p = time_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Duration&>(
+      ::PROTOBUF_NAMESPACE_ID::_Duration_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Duration& TrajectoryPoint::time() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.TrajectoryPoint.time)
+  return _internal_time();
+}
+inline void TrajectoryPoint::unsafe_arena_set_allocated_time(
+    ::PROTOBUF_NAMESPACE_ID::Duration* time) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(time_);
+  }
+  time_ = time;
+  if (time) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.TrajectoryPoint.time)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Duration* TrajectoryPoint::release_time() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Duration* temp = time_;
+  time_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Duration* TrajectoryPoint::unsafe_arena_release_time() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.TrajectoryPoint.time)
+  
+  ::PROTOBUF_NAMESPACE_ID::Duration* temp = time_;
+  time_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Duration* TrajectoryPoint::_internal_mutable_time() {
+  
+  if (time_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Duration>(GetArenaForAllocation());
+    time_ = p;
+  }
+  return time_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Duration* TrajectoryPoint::mutable_time() {
+  ::PROTOBUF_NAMESPACE_ID::Duration* _msg = _internal_mutable_time();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.TrajectoryPoint.time)
+  return _msg;
+}
+inline void TrajectoryPoint::set_allocated_time(::PROTOBUF_NAMESPACE_ID::Duration* time) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(time_);
+  }
+  if (time) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(time));
+    if (message_arena != submessage_arena) {
+      time = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, time, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  time_ = time;
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.TrajectoryPoint.time)
+}
+
+// .viam.component.arm.v1.JointPositions positions = 2 [json_name = "positions"];
+inline bool TrajectoryPoint::_internal_has_positions() const {
+  return this != internal_default_instance() && positions_ != nullptr;
+}
+inline bool TrajectoryPoint::has_positions() const {
+  return _internal_has_positions();
+}
+inline void TrajectoryPoint::clear_positions() {
+  if (GetArenaForAllocation() == nullptr && positions_ != nullptr) {
+    delete positions_;
+  }
+  positions_ = nullptr;
+}
+inline const ::viam::component::arm::v1::JointPositions& TrajectoryPoint::_internal_positions() const {
+  const ::viam::component::arm::v1::JointPositions* p = positions_;
+  return p != nullptr ? *p : reinterpret_cast<const ::viam::component::arm::v1::JointPositions&>(
+      ::viam::component::arm::v1::_JointPositions_default_instance_);
+}
+inline const ::viam::component::arm::v1::JointPositions& TrajectoryPoint::positions() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.TrajectoryPoint.positions)
+  return _internal_positions();
+}
+inline void TrajectoryPoint::unsafe_arena_set_allocated_positions(
+    ::viam::component::arm::v1::JointPositions* positions) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(positions_);
+  }
+  positions_ = positions;
+  if (positions) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.TrajectoryPoint.positions)
+}
+inline ::viam::component::arm::v1::JointPositions* TrajectoryPoint::release_positions() {
+  
+  ::viam::component::arm::v1::JointPositions* temp = positions_;
+  positions_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::viam::component::arm::v1::JointPositions* TrajectoryPoint::unsafe_arena_release_positions() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.TrajectoryPoint.positions)
+  
+  ::viam::component::arm::v1::JointPositions* temp = positions_;
+  positions_ = nullptr;
+  return temp;
+}
+inline ::viam::component::arm::v1::JointPositions* TrajectoryPoint::_internal_mutable_positions() {
+  
+  if (positions_ == nullptr) {
+    auto* p = CreateMaybeMessage<::viam::component::arm::v1::JointPositions>(GetArenaForAllocation());
+    positions_ = p;
+  }
+  return positions_;
+}
+inline ::viam::component::arm::v1::JointPositions* TrajectoryPoint::mutable_positions() {
+  ::viam::component::arm::v1::JointPositions* _msg = _internal_mutable_positions();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.TrajectoryPoint.positions)
+  return _msg;
+}
+inline void TrajectoryPoint::set_allocated_positions(::viam::component::arm::v1::JointPositions* positions) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete positions_;
+  }
+  if (positions) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(positions);
+    if (message_arena != submessage_arena) {
+      positions = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, positions, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  positions_ = positions;
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.TrajectoryPoint.positions)
+}
+
+// optional .viam.component.arm.v1.TrajectoryPoint.KinematicConstraints constraints = 3 [json_name = "constraints"];
+inline bool TrajectoryPoint::_internal_has_constraints() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || constraints_ != nullptr);
+  return value;
+}
+inline bool TrajectoryPoint::has_constraints() const {
+  return _internal_has_constraints();
+}
+inline void TrajectoryPoint::clear_constraints() {
+  if (constraints_ != nullptr) constraints_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints& TrajectoryPoint::_internal_constraints() const {
+  const ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* p = constraints_;
+  return p != nullptr ? *p : reinterpret_cast<const ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints&>(
+      ::viam::component::arm::v1::_TrajectoryPoint_KinematicConstraints_default_instance_);
+}
+inline const ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints& TrajectoryPoint::constraints() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.TrajectoryPoint.constraints)
+  return _internal_constraints();
+}
+inline void TrajectoryPoint::unsafe_arena_set_allocated_constraints(
+    ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* constraints) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(constraints_);
+  }
+  constraints_ = constraints;
+  if (constraints) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.TrajectoryPoint.constraints)
+}
+inline ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* TrajectoryPoint::release_constraints() {
+  _has_bits_[0] &= ~0x00000001u;
+  ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* temp = constraints_;
+  constraints_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* TrajectoryPoint::unsafe_arena_release_constraints() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.TrajectoryPoint.constraints)
+  _has_bits_[0] &= ~0x00000001u;
+  ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* temp = constraints_;
+  constraints_ = nullptr;
+  return temp;
+}
+inline ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* TrajectoryPoint::_internal_mutable_constraints() {
+  _has_bits_[0] |= 0x00000001u;
+  if (constraints_ == nullptr) {
+    auto* p = CreateMaybeMessage<::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints>(GetArenaForAllocation());
+    constraints_ = p;
+  }
+  return constraints_;
+}
+inline ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* TrajectoryPoint::mutable_constraints() {
+  ::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* _msg = _internal_mutable_constraints();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.TrajectoryPoint.constraints)
+  return _msg;
+}
+inline void TrajectoryPoint::set_allocated_constraints(::viam::component::arm::v1::TrajectoryPoint_KinematicConstraints* constraints) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete constraints_;
+  }
+  if (constraints) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(constraints);
+    if (message_arena != submessage_arena) {
+      constraints = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, constraints, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  constraints_ = constraints;
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.TrajectoryPoint.constraints)
+}
+
+// -------------------------------------------------------------------
+
+// MoveThroughJointPositionsStreamedRequest_Init
+
+// .google.protobuf.Struct extra = 99 [json_name = "extra"];
+inline bool MoveThroughJointPositionsStreamedRequest_Init::_internal_has_extra() const {
+  return this != internal_default_instance() && extra_ != nullptr;
+}
+inline bool MoveThroughJointPositionsStreamedRequest_Init::has_extra() const {
+  return _internal_has_extra();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Struct& MoveThroughJointPositionsStreamedRequest_Init::_internal_extra() const {
+  const ::PROTOBUF_NAMESPACE_ID::Struct* p = extra_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Struct&>(
+      ::PROTOBUF_NAMESPACE_ID::_Struct_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Struct& MoveThroughJointPositionsStreamedRequest_Init::extra() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.Init.extra)
+  return _internal_extra();
+}
+inline void MoveThroughJointPositionsStreamedRequest_Init::unsafe_arena_set_allocated_extra(
+    ::PROTOBUF_NAMESPACE_ID::Struct* extra) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra_);
+  }
+  extra_ = extra;
+  if (extra) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.Init.extra)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* MoveThroughJointPositionsStreamedRequest_Init::release_extra() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Struct* temp = extra_;
+  extra_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* MoveThroughJointPositionsStreamedRequest_Init::unsafe_arena_release_extra() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.Init.extra)
+  
+  ::PROTOBUF_NAMESPACE_ID::Struct* temp = extra_;
+  extra_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* MoveThroughJointPositionsStreamedRequest_Init::_internal_mutable_extra() {
+  
+  if (extra_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Struct>(GetArenaForAllocation());
+    extra_ = p;
+  }
+  return extra_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* MoveThroughJointPositionsStreamedRequest_Init::mutable_extra() {
+  ::PROTOBUF_NAMESPACE_ID::Struct* _msg = _internal_mutable_extra();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.Init.extra)
+  return _msg;
+}
+inline void MoveThroughJointPositionsStreamedRequest_Init::set_allocated_extra(::PROTOBUF_NAMESPACE_ID::Struct* extra) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra_);
+  }
+  if (extra) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra));
+    if (message_arena != submessage_arena) {
+      extra = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, extra, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  extra_ = extra;
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.Init.extra)
+}
+
+// -------------------------------------------------------------------
+
+// MoveThroughJointPositionsStreamedRequest_TrajectoryBatch
+
+// repeated .viam.component.arm.v1.TrajectoryPoint points = 1 [json_name = "points"];
+inline int MoveThroughJointPositionsStreamedRequest_TrajectoryBatch::_internal_points_size() const {
+  return points_.size();
+}
+inline int MoveThroughJointPositionsStreamedRequest_TrajectoryBatch::points_size() const {
+  return _internal_points_size();
+}
+inline void MoveThroughJointPositionsStreamedRequest_TrajectoryBatch::clear_points() {
+  points_.Clear();
+}
+inline ::viam::component::arm::v1::TrajectoryPoint* MoveThroughJointPositionsStreamedRequest_TrajectoryBatch::mutable_points(int index) {
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.TrajectoryBatch.points)
+  return points_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::viam::component::arm::v1::TrajectoryPoint >*
+MoveThroughJointPositionsStreamedRequest_TrajectoryBatch::mutable_points() {
+  // @@protoc_insertion_point(field_mutable_list:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.TrajectoryBatch.points)
+  return &points_;
+}
+inline const ::viam::component::arm::v1::TrajectoryPoint& MoveThroughJointPositionsStreamedRequest_TrajectoryBatch::_internal_points(int index) const {
+  return points_.Get(index);
+}
+inline const ::viam::component::arm::v1::TrajectoryPoint& MoveThroughJointPositionsStreamedRequest_TrajectoryBatch::points(int index) const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.TrajectoryBatch.points)
+  return _internal_points(index);
+}
+inline ::viam::component::arm::v1::TrajectoryPoint* MoveThroughJointPositionsStreamedRequest_TrajectoryBatch::_internal_add_points() {
+  return points_.Add();
+}
+inline ::viam::component::arm::v1::TrajectoryPoint* MoveThroughJointPositionsStreamedRequest_TrajectoryBatch::add_points() {
+  ::viam::component::arm::v1::TrajectoryPoint* _add = _internal_add_points();
+  // @@protoc_insertion_point(field_add:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.TrajectoryBatch.points)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::viam::component::arm::v1::TrajectoryPoint >&
+MoveThroughJointPositionsStreamedRequest_TrajectoryBatch::points() const {
+  // @@protoc_insertion_point(field_list:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.TrajectoryBatch.points)
+  return points_;
+}
+
+// -------------------------------------------------------------------
+
+// MoveThroughJointPositionsStreamedRequest
+
+// string name = 1 [json_name = "name"];
+inline void MoveThroughJointPositionsStreamedRequest::clear_name() {
+  name_.ClearToEmpty();
+}
+inline const std::string& MoveThroughJointPositionsStreamedRequest::name() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void MoveThroughJointPositionsStreamedRequest::set_name(ArgT0&& arg0, ArgT... args) {
+ 
+ name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.name)
+}
+inline std::string* MoveThroughJointPositionsStreamedRequest::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.name)
+  return _s;
+}
+inline const std::string& MoveThroughJointPositionsStreamedRequest::_internal_name() const {
+  return name_.Get();
+}
+inline void MoveThroughJointPositionsStreamedRequest::_internal_set_name(const std::string& value) {
+  
+  name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MoveThroughJointPositionsStreamedRequest::_internal_mutable_name() {
+  
+  return name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* MoveThroughJointPositionsStreamedRequest::release_name() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.name)
+  return name_.Release();
+}
+inline void MoveThroughJointPositionsStreamedRequest::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  name_.SetAllocated(name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (name_.IsDefault()) {
+    name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.name)
+}
+
+// .viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.Init init = 2 [json_name = "init"];
+inline bool MoveThroughJointPositionsStreamedRequest::_internal_has_init() const {
+  return message_case() == kInit;
+}
+inline bool MoveThroughJointPositionsStreamedRequest::has_init() const {
+  return _internal_has_init();
+}
+inline void MoveThroughJointPositionsStreamedRequest::set_has_init() {
+  _oneof_case_[0] = kInit;
+}
+inline void MoveThroughJointPositionsStreamedRequest::clear_init() {
+  if (_internal_has_init()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete message_.init_;
+    }
+    clear_has_message();
+  }
+}
+inline ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* MoveThroughJointPositionsStreamedRequest::release_init() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.init)
+  if (_internal_has_init()) {
+    clear_has_message();
+    ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* temp = message_.init_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    message_.init_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init& MoveThroughJointPositionsStreamedRequest::_internal_init() const {
+  return _internal_has_init()
+      ? *message_.init_
+      : reinterpret_cast< ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init&>(::viam::component::arm::v1::_MoveThroughJointPositionsStreamedRequest_Init_default_instance_);
+}
+inline const ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init& MoveThroughJointPositionsStreamedRequest::init() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.init)
+  return _internal_init();
+}
+inline ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* MoveThroughJointPositionsStreamedRequest::unsafe_arena_release_init() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.init)
+  if (_internal_has_init()) {
+    clear_has_message();
+    ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* temp = message_.init_;
+    message_.init_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void MoveThroughJointPositionsStreamedRequest::unsafe_arena_set_allocated_init(::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* init) {
+  clear_message();
+  if (init) {
+    set_has_init();
+    message_.init_ = init;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.init)
+}
+inline ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* MoveThroughJointPositionsStreamedRequest::_internal_mutable_init() {
+  if (!_internal_has_init()) {
+    clear_message();
+    set_has_init();
+    message_.init_ = CreateMaybeMessage< ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init >(GetArenaForAllocation());
+  }
+  return message_.init_;
+}
+inline ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* MoveThroughJointPositionsStreamedRequest::mutable_init() {
+  ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_Init* _msg = _internal_mutable_init();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.init)
+  return _msg;
+}
+
+// .viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.TrajectoryBatch batch = 3 [json_name = "batch"];
+inline bool MoveThroughJointPositionsStreamedRequest::_internal_has_batch() const {
+  return message_case() == kBatch;
+}
+inline bool MoveThroughJointPositionsStreamedRequest::has_batch() const {
+  return _internal_has_batch();
+}
+inline void MoveThroughJointPositionsStreamedRequest::set_has_batch() {
+  _oneof_case_[0] = kBatch;
+}
+inline void MoveThroughJointPositionsStreamedRequest::clear_batch() {
+  if (_internal_has_batch()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete message_.batch_;
+    }
+    clear_has_message();
+  }
+}
+inline ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* MoveThroughJointPositionsStreamedRequest::release_batch() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.batch)
+  if (_internal_has_batch()) {
+    clear_has_message();
+    ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* temp = message_.batch_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    message_.batch_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& MoveThroughJointPositionsStreamedRequest::_internal_batch() const {
+  return _internal_has_batch()
+      ? *message_.batch_
+      : reinterpret_cast< ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch&>(::viam::component::arm::v1::_MoveThroughJointPositionsStreamedRequest_TrajectoryBatch_default_instance_);
+}
+inline const ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch& MoveThroughJointPositionsStreamedRequest::batch() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.batch)
+  return _internal_batch();
+}
+inline ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* MoveThroughJointPositionsStreamedRequest::unsafe_arena_release_batch() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.batch)
+  if (_internal_has_batch()) {
+    clear_has_message();
+    ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* temp = message_.batch_;
+    message_.batch_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void MoveThroughJointPositionsStreamedRequest::unsafe_arena_set_allocated_batch(::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* batch) {
+  clear_message();
+  if (batch) {
+    set_has_batch();
+    message_.batch_ = batch;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.batch)
+}
+inline ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* MoveThroughJointPositionsStreamedRequest::_internal_mutable_batch() {
+  if (!_internal_has_batch()) {
+    clear_message();
+    set_has_batch();
+    message_.batch_ = CreateMaybeMessage< ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch >(GetArenaForAllocation());
+  }
+  return message_.batch_;
+}
+inline ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* MoveThroughJointPositionsStreamedRequest::mutable_batch() {
+  ::viam::component::arm::v1::MoveThroughJointPositionsStreamedRequest_TrajectoryBatch* _msg = _internal_mutable_batch();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.MoveThroughJointPositionsStreamedRequest.batch)
+  return _msg;
+}
+
+inline bool MoveThroughJointPositionsStreamedRequest::has_message() const {
+  return message_case() != MESSAGE_NOT_SET;
+}
+inline void MoveThroughJointPositionsStreamedRequest::clear_has_message() {
+  _oneof_case_[0] = MESSAGE_NOT_SET;
+}
+inline MoveThroughJointPositionsStreamedRequest::MessageCase MoveThroughJointPositionsStreamedRequest::message_case() const {
+  return MoveThroughJointPositionsStreamedRequest::MessageCase(_oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// MoveThroughJointPositionsStreamedResponse_BatchAck
+
+// .google.protobuf.Struct extra = 99 [json_name = "extra"];
+inline bool MoveThroughJointPositionsStreamedResponse_BatchAck::_internal_has_extra() const {
+  return this != internal_default_instance() && extra_ != nullptr;
+}
+inline bool MoveThroughJointPositionsStreamedResponse_BatchAck::has_extra() const {
+  return _internal_has_extra();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Struct& MoveThroughJointPositionsStreamedResponse_BatchAck::_internal_extra() const {
+  const ::PROTOBUF_NAMESPACE_ID::Struct* p = extra_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Struct&>(
+      ::PROTOBUF_NAMESPACE_ID::_Struct_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Struct& MoveThroughJointPositionsStreamedResponse_BatchAck::extra() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.BatchAck.extra)
+  return _internal_extra();
+}
+inline void MoveThroughJointPositionsStreamedResponse_BatchAck::unsafe_arena_set_allocated_extra(
+    ::PROTOBUF_NAMESPACE_ID::Struct* extra) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra_);
+  }
+  extra_ = extra;
+  if (extra) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.BatchAck.extra)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* MoveThroughJointPositionsStreamedResponse_BatchAck::release_extra() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Struct* temp = extra_;
+  extra_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* MoveThroughJointPositionsStreamedResponse_BatchAck::unsafe_arena_release_extra() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.BatchAck.extra)
+  
+  ::PROTOBUF_NAMESPACE_ID::Struct* temp = extra_;
+  extra_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* MoveThroughJointPositionsStreamedResponse_BatchAck::_internal_mutable_extra() {
+  
+  if (extra_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Struct>(GetArenaForAllocation());
+    extra_ = p;
+  }
+  return extra_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* MoveThroughJointPositionsStreamedResponse_BatchAck::mutable_extra() {
+  ::PROTOBUF_NAMESPACE_ID::Struct* _msg = _internal_mutable_extra();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.BatchAck.extra)
+  return _msg;
+}
+inline void MoveThroughJointPositionsStreamedResponse_BatchAck::set_allocated_extra(::PROTOBUF_NAMESPACE_ID::Struct* extra) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra_);
+  }
+  if (extra) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra));
+    if (message_arena != submessage_arena) {
+      extra = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, extra, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  extra_ = extra;
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.BatchAck.extra)
+}
+
+// -------------------------------------------------------------------
+
+// MoveThroughJointPositionsStreamedResponse
+
+// .viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.BatchAck ack = 1 [json_name = "ack"];
+inline bool MoveThroughJointPositionsStreamedResponse::_internal_has_ack() const {
+  return message_case() == kAck;
+}
+inline bool MoveThroughJointPositionsStreamedResponse::has_ack() const {
+  return _internal_has_ack();
+}
+inline void MoveThroughJointPositionsStreamedResponse::set_has_ack() {
+  _oneof_case_[0] = kAck;
+}
+inline void MoveThroughJointPositionsStreamedResponse::clear_ack() {
+  if (_internal_has_ack()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete message_.ack_;
+    }
+    clear_has_message();
+  }
+}
+inline ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* MoveThroughJointPositionsStreamedResponse::release_ack() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.ack)
+  if (_internal_has_ack()) {
+    clear_has_message();
+    ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* temp = message_.ack_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    message_.ack_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck& MoveThroughJointPositionsStreamedResponse::_internal_ack() const {
+  return _internal_has_ack()
+      ? *message_.ack_
+      : reinterpret_cast< ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck&>(::viam::component::arm::v1::_MoveThroughJointPositionsStreamedResponse_BatchAck_default_instance_);
+}
+inline const ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck& MoveThroughJointPositionsStreamedResponse::ack() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.ack)
+  return _internal_ack();
+}
+inline ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* MoveThroughJointPositionsStreamedResponse::unsafe_arena_release_ack() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.ack)
+  if (_internal_has_ack()) {
+    clear_has_message();
+    ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* temp = message_.ack_;
+    message_.ack_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void MoveThroughJointPositionsStreamedResponse::unsafe_arena_set_allocated_ack(::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* ack) {
+  clear_message();
+  if (ack) {
+    set_has_ack();
+    message_.ack_ = ack;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.ack)
+}
+inline ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* MoveThroughJointPositionsStreamedResponse::_internal_mutable_ack() {
+  if (!_internal_has_ack()) {
+    clear_message();
+    set_has_ack();
+    message_.ack_ = CreateMaybeMessage< ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck >(GetArenaForAllocation());
+  }
+  return message_.ack_;
+}
+inline ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* MoveThroughJointPositionsStreamedResponse::mutable_ack() {
+  ::viam::component::arm::v1::MoveThroughJointPositionsStreamedResponse_BatchAck* _msg = _internal_mutable_ack();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.MoveThroughJointPositionsStreamedResponse.ack)
+  return _msg;
+}
+
+inline bool MoveThroughJointPositionsStreamedResponse::has_message() const {
+  return message_case() != MESSAGE_NOT_SET;
+}
+inline void MoveThroughJointPositionsStreamedResponse::clear_has_message() {
+  _oneof_case_[0] = MESSAGE_NOT_SET;
+}
+inline MoveThroughJointPositionsStreamedResponse::MessageCase MoveThroughJointPositionsStreamedResponse::message_case() const {
+  return MoveThroughJointPositionsStreamedResponse::MessageCase(_oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
 // StopRequest
 
 // string name = 1 [json_name = "name"];
@@ -4699,9 +8291,568 @@ inline void MoveOptions::set_max_tcp_speed(double value) {
   // @@protoc_insertion_point(field_set:viam.component.arm.v1.MoveOptions.max_tcp_speed)
 }
 
+// -------------------------------------------------------------------
+
+// SetManualModeRequest
+
+// string name = 1 [json_name = "name"];
+inline void SetManualModeRequest::clear_name() {
+  name_.ClearToEmpty();
+}
+inline const std::string& SetManualModeRequest::name() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.SetManualModeRequest.name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SetManualModeRequest::set_name(ArgT0&& arg0, ArgT... args) {
+ 
+ name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:viam.component.arm.v1.SetManualModeRequest.name)
+}
+inline std::string* SetManualModeRequest::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.SetManualModeRequest.name)
+  return _s;
+}
+inline const std::string& SetManualModeRequest::_internal_name() const {
+  return name_.Get();
+}
+inline void SetManualModeRequest::_internal_set_name(const std::string& value) {
+  
+  name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SetManualModeRequest::_internal_mutable_name() {
+  
+  return name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SetManualModeRequest::release_name() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.SetManualModeRequest.name)
+  return name_.Release();
+}
+inline void SetManualModeRequest::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  name_.SetAllocated(name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (name_.IsDefault()) {
+    name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.SetManualModeRequest.name)
+}
+
+// bool manual_mode = 2 [json_name = "manualMode"];
+inline void SetManualModeRequest::clear_manual_mode() {
+  manual_mode_ = false;
+}
+inline bool SetManualModeRequest::_internal_manual_mode() const {
+  return manual_mode_;
+}
+inline bool SetManualModeRequest::manual_mode() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.SetManualModeRequest.manual_mode)
+  return _internal_manual_mode();
+}
+inline void SetManualModeRequest::_internal_set_manual_mode(bool value) {
+  
+  manual_mode_ = value;
+}
+inline void SetManualModeRequest::set_manual_mode(bool value) {
+  _internal_set_manual_mode(value);
+  // @@protoc_insertion_point(field_set:viam.component.arm.v1.SetManualModeRequest.manual_mode)
+}
+
+// int32 enabled_for = 3 [json_name = "enabledFor"];
+inline void SetManualModeRequest::clear_enabled_for() {
+  enabled_for_ = 0;
+}
+inline int32_t SetManualModeRequest::_internal_enabled_for() const {
+  return enabled_for_;
+}
+inline int32_t SetManualModeRequest::enabled_for() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.SetManualModeRequest.enabled_for)
+  return _internal_enabled_for();
+}
+inline void SetManualModeRequest::_internal_set_enabled_for(int32_t value) {
+  
+  enabled_for_ = value;
+}
+inline void SetManualModeRequest::set_enabled_for(int32_t value) {
+  _internal_set_enabled_for(value);
+  // @@protoc_insertion_point(field_set:viam.component.arm.v1.SetManualModeRequest.enabled_for)
+}
+
+// .google.protobuf.Struct extra = 99 [json_name = "extra"];
+inline bool SetManualModeRequest::_internal_has_extra() const {
+  return this != internal_default_instance() && extra_ != nullptr;
+}
+inline bool SetManualModeRequest::has_extra() const {
+  return _internal_has_extra();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Struct& SetManualModeRequest::_internal_extra() const {
+  const ::PROTOBUF_NAMESPACE_ID::Struct* p = extra_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Struct&>(
+      ::PROTOBUF_NAMESPACE_ID::_Struct_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Struct& SetManualModeRequest::extra() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.SetManualModeRequest.extra)
+  return _internal_extra();
+}
+inline void SetManualModeRequest::unsafe_arena_set_allocated_extra(
+    ::PROTOBUF_NAMESPACE_ID::Struct* extra) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra_);
+  }
+  extra_ = extra;
+  if (extra) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.SetManualModeRequest.extra)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* SetManualModeRequest::release_extra() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Struct* temp = extra_;
+  extra_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* SetManualModeRequest::unsafe_arena_release_extra() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.SetManualModeRequest.extra)
+  
+  ::PROTOBUF_NAMESPACE_ID::Struct* temp = extra_;
+  extra_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* SetManualModeRequest::_internal_mutable_extra() {
+  
+  if (extra_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Struct>(GetArenaForAllocation());
+    extra_ = p;
+  }
+  return extra_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* SetManualModeRequest::mutable_extra() {
+  ::PROTOBUF_NAMESPACE_ID::Struct* _msg = _internal_mutable_extra();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.SetManualModeRequest.extra)
+  return _msg;
+}
+inline void SetManualModeRequest::set_allocated_extra(::PROTOBUF_NAMESPACE_ID::Struct* extra) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra_);
+  }
+  if (extra) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra));
+    if (message_arena != submessage_arena) {
+      extra = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, extra, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  extra_ = extra;
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.SetManualModeRequest.extra)
+}
+
+// -------------------------------------------------------------------
+
+// SetManualModeResponse
+
+// -------------------------------------------------------------------
+
+// GetManualModeRequest
+
+// string name = 1 [json_name = "name"];
+inline void GetManualModeRequest::clear_name() {
+  name_.ClearToEmpty();
+}
+inline const std::string& GetManualModeRequest::name() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.GetManualModeRequest.name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GetManualModeRequest::set_name(ArgT0&& arg0, ArgT... args) {
+ 
+ name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:viam.component.arm.v1.GetManualModeRequest.name)
+}
+inline std::string* GetManualModeRequest::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.GetManualModeRequest.name)
+  return _s;
+}
+inline const std::string& GetManualModeRequest::_internal_name() const {
+  return name_.Get();
+}
+inline void GetManualModeRequest::_internal_set_name(const std::string& value) {
+  
+  name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* GetManualModeRequest::_internal_mutable_name() {
+  
+  return name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* GetManualModeRequest::release_name() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.GetManualModeRequest.name)
+  return name_.Release();
+}
+inline void GetManualModeRequest::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  name_.SetAllocated(name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (name_.IsDefault()) {
+    name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.GetManualModeRequest.name)
+}
+
+// .google.protobuf.Struct extra = 99 [json_name = "extra"];
+inline bool GetManualModeRequest::_internal_has_extra() const {
+  return this != internal_default_instance() && extra_ != nullptr;
+}
+inline bool GetManualModeRequest::has_extra() const {
+  return _internal_has_extra();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Struct& GetManualModeRequest::_internal_extra() const {
+  const ::PROTOBUF_NAMESPACE_ID::Struct* p = extra_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Struct&>(
+      ::PROTOBUF_NAMESPACE_ID::_Struct_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Struct& GetManualModeRequest::extra() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.GetManualModeRequest.extra)
+  return _internal_extra();
+}
+inline void GetManualModeRequest::unsafe_arena_set_allocated_extra(
+    ::PROTOBUF_NAMESPACE_ID::Struct* extra) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra_);
+  }
+  extra_ = extra;
+  if (extra) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.GetManualModeRequest.extra)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* GetManualModeRequest::release_extra() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Struct* temp = extra_;
+  extra_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* GetManualModeRequest::unsafe_arena_release_extra() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.GetManualModeRequest.extra)
+  
+  ::PROTOBUF_NAMESPACE_ID::Struct* temp = extra_;
+  extra_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* GetManualModeRequest::_internal_mutable_extra() {
+  
+  if (extra_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Struct>(GetArenaForAllocation());
+    extra_ = p;
+  }
+  return extra_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* GetManualModeRequest::mutable_extra() {
+  ::PROTOBUF_NAMESPACE_ID::Struct* _msg = _internal_mutable_extra();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.GetManualModeRequest.extra)
+  return _msg;
+}
+inline void GetManualModeRequest::set_allocated_extra(::PROTOBUF_NAMESPACE_ID::Struct* extra) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra_);
+  }
+  if (extra) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra));
+    if (message_arena != submessage_arena) {
+      extra = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, extra, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  extra_ = extra;
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.GetManualModeRequest.extra)
+}
+
+// -------------------------------------------------------------------
+
+// GetManualModeResponse
+
+// bool manual_mode = 1 [json_name = "manualMode"];
+inline void GetManualModeResponse::clear_manual_mode() {
+  manual_mode_ = false;
+}
+inline bool GetManualModeResponse::_internal_manual_mode() const {
+  return manual_mode_;
+}
+inline bool GetManualModeResponse::manual_mode() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.GetManualModeResponse.manual_mode)
+  return _internal_manual_mode();
+}
+inline void GetManualModeResponse::_internal_set_manual_mode(bool value) {
+  
+  manual_mode_ = value;
+}
+inline void GetManualModeResponse::set_manual_mode(bool value) {
+  _internal_set_manual_mode(value);
+  // @@protoc_insertion_point(field_set:viam.component.arm.v1.GetManualModeResponse.manual_mode)
+}
+
+// -------------------------------------------------------------------
+
+// GetPropertiesRequest
+
+// string name = 1 [json_name = "name"];
+inline void GetPropertiesRequest::clear_name() {
+  name_.ClearToEmpty();
+}
+inline const std::string& GetPropertiesRequest::name() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.GetPropertiesRequest.name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GetPropertiesRequest::set_name(ArgT0&& arg0, ArgT... args) {
+ 
+ name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:viam.component.arm.v1.GetPropertiesRequest.name)
+}
+inline std::string* GetPropertiesRequest::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.GetPropertiesRequest.name)
+  return _s;
+}
+inline const std::string& GetPropertiesRequest::_internal_name() const {
+  return name_.Get();
+}
+inline void GetPropertiesRequest::_internal_set_name(const std::string& value) {
+  
+  name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* GetPropertiesRequest::_internal_mutable_name() {
+  
+  return name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* GetPropertiesRequest::release_name() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.GetPropertiesRequest.name)
+  return name_.Release();
+}
+inline void GetPropertiesRequest::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  name_.SetAllocated(name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (name_.IsDefault()) {
+    name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.GetPropertiesRequest.name)
+}
+
+// .google.protobuf.Struct extra = 99 [json_name = "extra"];
+inline bool GetPropertiesRequest::_internal_has_extra() const {
+  return this != internal_default_instance() && extra_ != nullptr;
+}
+inline bool GetPropertiesRequest::has_extra() const {
+  return _internal_has_extra();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Struct& GetPropertiesRequest::_internal_extra() const {
+  const ::PROTOBUF_NAMESPACE_ID::Struct* p = extra_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Struct&>(
+      ::PROTOBUF_NAMESPACE_ID::_Struct_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Struct& GetPropertiesRequest::extra() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.GetPropertiesRequest.extra)
+  return _internal_extra();
+}
+inline void GetPropertiesRequest::unsafe_arena_set_allocated_extra(
+    ::PROTOBUF_NAMESPACE_ID::Struct* extra) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra_);
+  }
+  extra_ = extra;
+  if (extra) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:viam.component.arm.v1.GetPropertiesRequest.extra)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* GetPropertiesRequest::release_extra() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Struct* temp = extra_;
+  extra_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* GetPropertiesRequest::unsafe_arena_release_extra() {
+  // @@protoc_insertion_point(field_release:viam.component.arm.v1.GetPropertiesRequest.extra)
+  
+  ::PROTOBUF_NAMESPACE_ID::Struct* temp = extra_;
+  extra_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* GetPropertiesRequest::_internal_mutable_extra() {
+  
+  if (extra_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Struct>(GetArenaForAllocation());
+    extra_ = p;
+  }
+  return extra_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Struct* GetPropertiesRequest::mutable_extra() {
+  ::PROTOBUF_NAMESPACE_ID::Struct* _msg = _internal_mutable_extra();
+  // @@protoc_insertion_point(field_mutable:viam.component.arm.v1.GetPropertiesRequest.extra)
+  return _msg;
+}
+inline void GetPropertiesRequest::set_allocated_extra(::PROTOBUF_NAMESPACE_ID::Struct* extra) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra_);
+  }
+  if (extra) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(extra));
+    if (message_arena != submessage_arena) {
+      extra = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, extra, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  extra_ = extra;
+  // @@protoc_insertion_point(field_set_allocated:viam.component.arm.v1.GetPropertiesRequest.extra)
+}
+
+// -------------------------------------------------------------------
+
+// GetPropertiesResponse
+
+// bool support_manual_mode = 1 [json_name = "supportManualMode"];
+inline void GetPropertiesResponse::clear_support_manual_mode() {
+  support_manual_mode_ = false;
+}
+inline bool GetPropertiesResponse::_internal_support_manual_mode() const {
+  return support_manual_mode_;
+}
+inline bool GetPropertiesResponse::support_manual_mode() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.GetPropertiesResponse.support_manual_mode)
+  return _internal_support_manual_mode();
+}
+inline void GetPropertiesResponse::_internal_set_support_manual_mode(bool value) {
+  
+  support_manual_mode_ = value;
+}
+inline void GetPropertiesResponse::set_support_manual_mode(bool value) {
+  _internal_set_support_manual_mode(value);
+  // @@protoc_insertion_point(field_set:viam.component.arm.v1.GetPropertiesResponse.support_manual_mode)
+}
+
+// bool support_cartesian_commands = 2 [json_name = "supportCartesianCommands"];
+inline void GetPropertiesResponse::clear_support_cartesian_commands() {
+  support_cartesian_commands_ = false;
+}
+inline bool GetPropertiesResponse::_internal_support_cartesian_commands() const {
+  return support_cartesian_commands_;
+}
+inline bool GetPropertiesResponse::support_cartesian_commands() const {
+  // @@protoc_insertion_point(field_get:viam.component.arm.v1.GetPropertiesResponse.support_cartesian_commands)
+  return _internal_support_cartesian_commands();
+}
+inline void GetPropertiesResponse::_internal_set_support_cartesian_commands(bool value) {
+  
+  support_cartesian_commands_ = value;
+}
+inline void GetPropertiesResponse::set_support_cartesian_commands(bool value) {
+  _internal_set_support_cartesian_commands(value);
+  // @@protoc_insertion_point(field_set:viam.component.arm.v1.GetPropertiesResponse.support_cartesian_commands)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

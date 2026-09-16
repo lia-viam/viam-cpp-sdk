@@ -37,7 +37,7 @@ else()
   cmake_minimum_required(VERSION 3.25 FATAL_ERROR)
 endif()
 
-set(CMAKE_PROJECT_VERSION 0.37.0)
+set(CMAKE_PROJECT_VERSION 0.41.0)
 
 # Identify the project.
 project(viam-cpp-sdk
@@ -46,6 +46,16 @@ project(viam-cpp-sdk
   HOMEPAGE_URL https://github.com/viamrobotics/viam-cpp-sdk
   LANGUAGES CXX
 )
+
+# Detect if we're building as a standalone module
+# vs being included via FetchContent by a downstream consumer
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  set(VIAMCPPSDK_STANDALONE_BUILD ON)
+  message(STATUS "viam-cpp-sdk: Standalone build mode")
+else()
+  set(VIAMCPPSDK_STANDALONE_BUILD OFF)
+  message(STATUS "viam-cpp-sdk: FetchContent mode (included by parent project)")
+endif()
 
 
 # Configure cmake-level options:
@@ -113,7 +123,7 @@ option(VIAMCPPSDK_USE_LOCAL_PROTOS "Generate protos against sibling `api` direct
 # This causes the SDK's internal code to compile with `-Wall` and
 # `-Werror` flags.
 #
-option(VIAMCPPSDK_USE_WALL_WERROR "Build with -Wall and -Werror flags" ON)
+option(VIAMCPPSDK_USE_WALL_WERROR "Build with -Wall and -Werror flags" ${VIAMCPPSDK_STANDALONE_BUILD})
 
 
 # - `VIAMCPPSDK_SANITIZED_BUILD`
@@ -141,11 +151,15 @@ option(VIAMCPPSDK_CLANG_TIDY "Run the clang-tidy linter" OFF)
 #
 option(VIAMCPPSDK_OPENTELEMETRY_TRACING "Compile OpenTelemetry tracing into all gRPC calls" OFF)
 
-# The following options are only defined if this project is not being included as a subproject
-if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-  option(VIAMCPPSDK_BUILD_EXAMPLES "Build the example executables" ON)
-  option(VIAMCPPSDK_BUILD_TESTS "Build the example executables" ON)
-endif()
+# - `VIAMCPPSDK_BUILD_EXAMPLES `
+#
+# Defaults to ON for standalone builds, OFF for FetchContent consumers.
+option(VIAMCPPSDK_BUILD_EXAMPLES "Build the example executables" ${VIAMCPPSDK_STANDALONE_BUILD})
+
+# - `VIAMCPPSDK_BUILD_TESTS `
+#
+# Defaults to ON for standalone builds, OFF for FetchContent consumers.
+option(VIAMCPPSDK_BUILD_TESTS "Build the example executables" ${VIAMCPPSDK_STANDALONE_BUILD})
 
 
 # Enforce known toolchains and toolchain minima unless asked not to.
@@ -365,11 +379,11 @@ add_custom_target(
 )
 
 
-set(VIAMCPPSDK_BOOST_VERSION_MINIMUM 1.71)
+set(VIAMCPPSDK_BOOST_VERSION_MINIMUM 1.74)
 set(VIAMCPPSDK_GRPC_VERSION_MINIMUM 1.30.2)
 set(VIAMCPPSDK_PROTOBUF_VERSION_MINIMUM 3.12.4)
-set(VIAMCPPSDK_XTL_VERSION_MINIMUM 0.7.2)
-set(VIAMCPPSDK_XTENSOR_VERSION_MINIMUM 0.24.3)
+set(VIAMCPPSDK_XTL_VERSION_MINIMUM 0.8.0)
+set(VIAMCPPSDK_XTENSOR_VERSION_MINIMUM 0.26.0)
 
 # Time to find `BOOST`.
 if (VIAMCPPSDK_BUILD_TESTS)
@@ -503,14 +517,14 @@ include(FetchContent)
 FetchContent_Declare(
   xtl
   GIT_REPOSITORY https://github.com/xtensor-stack/xtl.git
-  GIT_TAG        e0f00666d90086bb245ae73abb6123d0e2c1b30b # 0.7.2
+  GIT_TAG        ef84e9f27020ad54961c99acd293d80d4b775dd3 # 0.8.0
   FIND_PACKAGE_ARGS ${VIAMCPPSDK_XTL_VERSION_MINIMUM} CONFIG
 )
 
 FetchContent_Declare(
   xtensor
   GIT_REPOSITORY https://github.com/xtensor-stack/xtensor
-  GIT_TAG        9e8662ddad7fcd1a96969b96bf8955e59cf44978 # 0.24.3
+  GIT_TAG        f31d415a507b84d0097436a38293df3f56906ad1 # 0.26.0
   FIND_PACKAGE_ARGS ${VIAMCPPSDK_XTENSOR_VERSION_MINIMUM} CONFIG
 )
 

@@ -20,8 +20,8 @@ namespace viam {
 namespace sdk {
 
 // Note that quaternion must be the first type because this is what is default constructed.
-using Orientation =
-    std::variant<quaternion, axis_angles, orientation_vector, orientation_vector_degrees, euler_angles>;
+using Orientation = std::
+    variant<quaternion, axis_angles, orientation_vector, orientation_vector_degrees, euler_angles>;
 
 OrientationType get_type(const Orientation&);
 

@@ -12,53 +12,24 @@ on:
       branch:
         required: true
         type: string
+      rdk_branch:
+        description: 'Branch of viamrobotics/rdk to check out for the generator'
+        required: false
+        type: string
+        default: main
 
 jobs:
   update_templates:
     runs-on: ubuntu-latest
     container:
-      image: debian:bookworm
+      image: ghcr.io/viamrobotics/cpp-sdk-system-debian:bookworm
 
     steps:
-      - name: Install dependencies
+      # The generator pins Clang 15 because the LibTooling interface it uses is unstable.
+      - name: Install generator-only dependencies
         run: |
           apt-get update
-          apt-get -y dist-upgrade
-
           DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install \
-              build-essential \
-              ca-certificates \
-              cmake \
-              curl \
-              doxygen \
-              g++ \
-              gettext \
-              gdb \
-              git \
-              gnupg \
-              gpg \
-              less \
-              libboost-all-dev \
-              libc-ares-dev \
-              libgrpc++-dev \
-              libprotobuf-dev \
-              libre2-dev \
-              libssl-dev \
-              lsof \
-              ninja-build \
-              pkg-config \
-              protobuf-compiler-grpc \
-              software-properties-common \
-              sudo \
-              wget \
-              zlib1g-dev
-
-          bash -c 'wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/llvm.asc'
-          apt-add-repository -y 'deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-15 main'
-          apt-add-repository -y 'deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-15 main'
-          apt-get update
-
-          DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install -t llvm-toolchain-bookworm-15 \
             clang-15 \
             llvm-15-dev \
             libclang-15-dev
@@ -67,6 +38,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: viamrobotics/rdk
+          ref: ${{ inputs.rdk_branch || 'main' }}
           path: rdk
 
       - name: Build and install generator
@@ -76,7 +48,8 @@ jobs:
           cd build
           cmake .. -G Ninja \
             -DCMAKE_CXX_COMPILER=clang++-15 \
-            -DLLVM_DIR=/usr/lib/llvm-15
+            -DLLVM_DIR=/usr/lib/llvm-15/lib/cmake/llvm \
+            -DClang_DIR=/usr/lib/llvm-15/lib/cmake/clang
           ninja install
           cl_gen -h
 
@@ -118,7 +91,6 @@ jobs:
         run: |
           changed_files=$(git diff --name-only  ${{ github.event.before }} ${{ github.event.after }} | \
             grep -E '^src/viam/sdk/(components|services)/[a-z_]+\.hpp' | \
-            sed 's@\.hpp@.cpp@g' | \
             sort -u )
           echo "Changed files:"
           echo "$changed_files"
@@ -133,10 +105,10 @@ jobs:
         working-directory: sdk
         run: |
           all_files=$(find src/viam/sdk/components src/viam/sdk/services \
-            -name '*.cpp' \
+            -name '*.hpp' \
             -not -path '*/private/*' \
-            -not -name 'component.cpp' \
-            -not -name 'service.cpp')
+            -not -name 'component.hpp' \
+            -not -name 'service.hpp')
           echo "All files to regenerate:"
           echo "$all_files"
 

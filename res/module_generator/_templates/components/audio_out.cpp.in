@@ -8,17 +8,22 @@ namespace {{ .ModuleSnake }} {
 
 {{ .ModelPascal }}::{{ .ModelPascal }}(const viam::sdk::Dependencies& deps, const viam::sdk::ResourceConfig& cfg)
     : AudioOut(cfg.name()) {
-    throw std::runtime_error("constructor not implemented");
+    // TODO: initialize your resource here.
+    // `deps` provides access to other resources this component depends on.
+    // `cfg` contains the resource configuration from the robot config.
 }
 
 
+// validate is called by the Viam SDK before constructing the resource.
+// Return the names of any resources that must exist before this resource can be built.
+// Throw an exception if cfg contains invalid configuration.
 std::vector<std::string> {{ .ModelPascal }}::validate(const viam::sdk::ResourceConfig& cfg) {
-    throw std::runtime_error("\"validate\" not implemented");
+    return {};
 }
 
 void {{ .ModelPascal }}::play(
         const std::vector<uint8_t> & audio_data,
-        boost::optional<viam::sdk::AudioOut::audio_info> info,
+        std::optional<viam::sdk::AudioOut::audio_info> info,
         const viam::sdk::ProtoStruct & extra)
 {
     throw std::logic_error("\"play\" not implemented");
@@ -26,7 +31,7 @@ void {{ .ModelPascal }}::play(
 
 void {{ .ModelPascal }}::play_stream(
         viam::sdk::AudioOut::audio_info info,
-        std::function<boost::optional<std::vector<uint8_t>> ()> chunk_source,
+        std::function<std::optional<std::vector<uint8_t>> ()> chunk_source,
         const viam::sdk::ProtoStruct & extra)
 {
     throw std::logic_error("\"play_stream\" not implemented");

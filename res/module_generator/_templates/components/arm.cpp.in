@@ -8,12 +8,17 @@ namespace {{ .ModuleSnake }} {
 
 {{ .ModelPascal }}::{{ .ModelPascal }}(const viam::sdk::Dependencies& deps, const viam::sdk::ResourceConfig& cfg)
     : Arm(cfg.name()) {
-    throw std::runtime_error("constructor not implemented");
+    // TODO: initialize your resource here.
+    // `deps` provides access to other resources this component depends on.
+    // `cfg` contains the resource configuration from the robot config.
 }
 
 
+// validate is called by the Viam SDK before constructing the resource.
+// Return the names of any resources that must exist before this resource can be built.
+// Throw an exception if cfg contains invalid configuration.
 std::vector<std::string> {{ .ModelPascal }}::validate(const viam::sdk::ResourceConfig& cfg) {
-    throw std::runtime_error("\"validate\" not implemented");
+    return {};
 }
 
 void {{ .ModelPascal }}::stop(const viam::sdk::ProtoStruct & extra)
@@ -53,6 +58,14 @@ void {{ .ModelPascal }}::move_through_joint_positions(
     throw std::logic_error("\"move_through_joint_positions\" not implemented");
 }
 
+viam::sdk::Arm::stream_outcome {{ .ModelPascal }}::move_through_joint_positions_streamed(
+        const std::function<std::optional<std::vector<trajectory_point>> ()> & batch_source,
+        const std::function<bool (trajectory_update)> & update_handler,
+        const viam::sdk::ProtoStruct & extra)
+{
+    throw std::logic_error("\"move_through_joint_positions_streamed\" not implemented");
+}
+
 bool {{ .ModelPascal }}::is_moving()
 {
     throw std::logic_error("\"is_moving\" not implemented");
@@ -81,6 +94,24 @@ std::map<std::string, viam::sdk::mesh> {{ .ModelPascal }}::get_3d_models(const v
 std::vector<viam::sdk::GeometryConfig> {{ .ModelPascal }}::get_geometries(const viam::sdk::ProtoStruct & extra)
 {
     throw std::logic_error("\"get_geometries\" not implemented");
+}
+
+viam::sdk::Arm::properties {{ .ModelPascal }}::get_properties(const viam::sdk::ProtoStruct & extra)
+{
+    throw std::logic_error("\"get_properties\" not implemented");
+}
+
+void {{ .ModelPascal }}::set_manual_mode(
+        bool manual_mode,
+        std::chrono::seconds enabled_for,
+        const viam::sdk::ProtoStruct & extra)
+{
+    throw std::logic_error("\"set_manual_mode\" not implemented");
+}
+
+bool {{ .ModelPascal }}::get_manual_mode(const viam::sdk::ProtoStruct & extra)
+{
+    throw std::logic_error("\"get_manual_mode\" not implemented");
 }
 
 } // namespace {{ .ModuleSnake }}

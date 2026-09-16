@@ -18,19 +18,19 @@ namespace viam {
 namespace sdk {
 
 struct coordinates {
-    double x, y, z;
+    double x = 0.0, y = 0.0, z = 0.0;
     friend bool operator==(const coordinates&, const coordinates&) = default;
 };
 
 struct pose_orientation {
-    double o_x, o_y, o_z;
+    double o_x = 0.0, o_y = 0.0, o_z = 0.0;
     friend bool operator==(const pose_orientation&, const pose_orientation&) = default;
 };
 
 struct pose {
     struct coordinates coordinates;
     pose_orientation orientation;
-    double theta;
+    double theta = 0.0;
 
     friend bool operator==(const pose&, const pose&) = default;
     friend std::ostream& operator<<(std::ostream& os, const pose& v);

@@ -1,8 +1,12 @@
-#include "viam/sdk/common/mesh.hpp"
-#include "viam/sdk/rpc/grpc_context_observer.hpp"
 #include <viam/sdk/tests/mocks/mock_arm.hpp>
 
-#include "mock_arm.hpp"
+#include <stdexcept>
+
+#include <grpcpp/support/status.h>
+
+#include <viam/sdk/common/exception.hpp>
+#include <viam/sdk/common/mesh.hpp>
+#include <viam/sdk/rpc/grpc_context_observer.hpp>
 #include <viam/sdk/tests/test_utils.hpp>
 
 namespace viam {
@@ -49,6 +53,31 @@ void MockArm::move_through_joint_positions(const std::vector<std::vector<double>
     move_opts = opts;
 }
 
+sdk::Arm::stream_outcome MockArm::move_through_joint_positions_streamed(
+    const std::function<std::optional<std::vector<Arm::trajectory_point>>()>& batch_source,
+    const std::function<bool(Arm::trajectory_update)>& update_handler,
+    const sdk::ProtoStruct&) {
+    while (auto batch = batch_source()) {
+        peek_streamed_batches.push_back(*batch);
+        if (!update_handler(Arm::trajectory_update{})) {
+            return sdk::Arm::stream_outcome::k_halted_by_update_handler;
+        }
+        ++peek_streamed_ack_count;
+    }
+
+    switch (streamed_fault) {
+        case stream_fault::k_none:
+            break;
+        case stream_fault::k_runtime_error:
+            throw std::runtime_error("mock arm streamed fault");
+        case stream_fault::k_grpc_status:
+            throw grpc::Status(grpc::StatusCode::FAILED_PRECONDITION,
+                               "mock arm streamed grpc fault");
+    }
+
+    return sdk::Arm::stream_outcome::k_completed;
+}
+
 void MockArm::stop(const sdk::ProtoStruct&) {
     peek_stop_called = true;
 }
@@ -75,6 +104,21 @@ std::vector<sdk::GeometryConfig> MockArm::get_geometries(const sdk::ProtoStruct&
 
 std::map<std::string, sdk::mesh> MockArm::get_3d_models(const sdk::ProtoStruct&) {
     return fake_3d_models();
+}
+
+sdk::Arm::properties MockArm::get_properties(const sdk::ProtoStruct&) {
+    // The mock implements move_to_position but does not support manual mode.
+    return {/*support_manual_mode=*/false, /*support_cartesian_commands=*/true};
+}
+
+void MockArm::set_manual_mode(bool, std::chrono::seconds, const sdk::ProtoStruct&) {
+    throw sdk::Exception(sdk::ErrorCondition::k_not_supported,
+                         "mock arm does not support manual mode");
+}
+
+bool MockArm::get_manual_mode(const sdk::ProtoStruct&) {
+    throw sdk::Exception(sdk::ErrorCondition::k_not_supported,
+                         "mock arm does not support manual mode");
 }
 
 }  // namespace arm
