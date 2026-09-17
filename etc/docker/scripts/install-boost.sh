@@ -30,9 +30,7 @@ tar xzf "${tarball}.tar.gz"
 rm "${tarball}.tar.gz"
 cd "${tarball}"
 
-# log/program_options/test are what the SDK links; the rest are their dependencies.
-./bootstrap.sh --prefix=/usr/local \
-    --with-libraries=atomic,chrono,date_time,filesystem,log,program_options,regex,system,test,thread
+./bootstrap.sh --prefix=/usr/local --with-libraries=log,program_options,test
 ./b2 -j"$(nproc)" variant=release link=shared threading=multi \
     linkflags=-Wl,-rpath,/usr/local/lib install
 
